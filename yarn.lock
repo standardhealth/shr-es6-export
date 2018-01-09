@@ -1156,8 +1156,8 @@ mocha@^3.2.0:
     supports-color "3.1.2"
 
 moment@^2.10.6:
-  version "2.19.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
 ms@2.0.0:
   version "2.0.0"
@@ -1176,8 +1176,8 @@ mv@~2:
     rimraf "~2.4.0"
 
 nan@^2.3.3:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.7.0.tgz#d95bf721ec877e08db276ed3fc6eb78f9083ad46"
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -1398,16 +1398,13 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-shr-models@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/shr-models/-/shr-models-5.2.0.tgz#3dba6f113f65a16250de2012f6e4d4bbf692e0ed"
+shr-models@^5.2.1:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/shr-models/-/shr-models-5.2.2.tgz#42b9f13deded480628529e22bca09af546f8ba81"
 
-shr-test-helpers@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/shr-test-helpers/-/shr-test-helpers-5.0.2.tgz#e808b7b1d9be938257b4bd7c3bc223039c9ab42f"
-  dependencies:
-    bunyan "^1.8.9"
-    shr-models "^5.2.0"
+shr-test-helpers@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/shr-test-helpers/-/shr-test-helpers-5.1.1.tgz#e649cab3685f76bd25eca590d0949fd162b43f9f"
 
 slash@^1.0.0:
   version "1.0.0"

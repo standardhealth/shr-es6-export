@@ -4,14 +4,14 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./build/test', true);
+setup('./test/fixtures/spec', './build/test', true);
 
 describe('#ObjectFactory()', () => {
   const ObjectFactory = importResult('ObjectFactory');
-  const SimpleValue = importResult('shr/test/SimpleValue');
+  const SimpleValue = importResult('shr/simple/SimpleValue');
 
   it('should create classes by name', () => {
-    const sv = ObjectFactory.createInstance('http://standardhealthrecord.org/test/SimpleValue');
+    const sv = ObjectFactory.createInstance('http://standardhealthrecord.org/simple/SimpleValue');
     expect(sv).instanceOf(SimpleValue);
     expect(sv.entryInfo).to.be.undefined;
     expect(sv.value).to.be.undefined;
@@ -24,8 +24,8 @@ describe('#ObjectFactory()', () => {
 });
 
 describe('#NamespaceObjectFactory()', () => {
-  const ShrTestObjectFactory = importResult('shr/test/ShrTestObjectFactory');
-  const SimpleValue = importResult('shr/test/SimpleValue');
+  const ShrTestObjectFactory = importResult('shr/simple/ShrSimpleObjectFactory');
+  const SimpleValue = importResult('shr/simple/SimpleValue');
 
   it('should create classes by name', () => {
     const sv = ShrTestObjectFactory.createInstance('SimpleValue');

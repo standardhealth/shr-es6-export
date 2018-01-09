@@ -25,10 +25,11 @@
     "eslint": "^3.6.1",
     "fs-extra": "^4.0.2",
     "mocha": "^3.2.0",
-    "shr-models": "^5.2.1",
-    "shr-test-helpers": "^5.1.1"
+    "shr-models": "^5.2.2",
+    "shr-test-helpers": "^5.1.1",
+    "shr-text-import": "^5.2.3"
   },
   "peerDependencies": {
-    "shr-models": "^5.2.1"
+    "shr-models": "^5.2.2"
   }
 }

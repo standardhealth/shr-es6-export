@@ -4,10 +4,10 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./build/test', true);
+setup('./test/fixtures/spec', './build/test', true);
 
 describe('#SimpleValueClass()', () => {
-  const SimpleValue = importResult('shr/test/SimpleValue');
+  const SimpleValue = importResult('shr/simple/SimpleValue');
   it('should construct to empty instance', () => {
     const sv = new SimpleValue();
     expect(sv).instanceOf(SimpleValue);

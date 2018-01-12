@@ -2,5 +2,11 @@ Grammar:      DataElement 5.0
 Namespace:    shr.simple
 Uses:         shr.core
 
-EntryElement: SimpleValue
+Element:      PrimitiveValue
 Value:        string
+
+EntryElement: PrimitiveValueEntry
+Value:        string
+
+EntryElement: ElementValueEntry
+Value:        PrimitiveValue

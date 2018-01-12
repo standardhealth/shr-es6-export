@@ -30,3 +30,6 @@ Value:			0..1 code
 Element:		CodeableConcept
 0..*			Coding
 0..1			DisplayText
+
+Element:   	 	CreationTime
+Value:        dateTime

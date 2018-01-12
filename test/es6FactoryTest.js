@@ -8,14 +8,14 @@ setup('./test/fixtures/spec', './build/test', true);
 
 describe('#ObjectFactory()', () => {
   const ObjectFactory = importResult('ObjectFactory');
-  const SimpleValue = importResult('shr/simple/SimpleValue');
+  const PrimitiveValueEntry = importResult('shr/simple/PrimitiveValueEntry');
 
   it('should create classes by name', () => {
-    const sv = ObjectFactory.createInstance('http://standardhealthrecord.org/simple/SimpleValue');
-    expect(sv).instanceOf(SimpleValue);
-    expect(sv.entryInfo).to.be.undefined;
-    expect(sv.value).to.be.undefined;
-    expect(sv.string).to.be.undefined;
+    const pv = ObjectFactory.createInstance('http://standardhealthrecord.org/spec/shr/simple/PrimitiveValueEntry');
+    expect(pv).instanceOf(PrimitiveValueEntry);
+    expect(pv.entryInfo).to.be.undefined;
+    expect(pv.value).to.be.undefined;
+    expect(pv.string).to.be.undefined;
   });
 
   it('should throw when you request an unknown element', () => {
@@ -25,14 +25,14 @@ describe('#ObjectFactory()', () => {
 
 describe('#NamespaceObjectFactory()', () => {
   const ShrTestObjectFactory = importResult('shr/simple/ShrSimpleObjectFactory');
-  const SimpleValue = importResult('shr/simple/SimpleValue');
+  const PrimitiveValueEntry = importResult('shr/simple/PrimitiveValueEntry');
 
   it('should create classes by name', () => {
-    const sv = ShrTestObjectFactory.createInstance('SimpleValue');
-    expect(sv).instanceOf(SimpleValue);
-    expect(sv.entryInfo).to.be.undefined;
-    expect(sv.value).to.be.undefined;
-    expect(sv.string).to.be.undefined;
+    const pv = ShrTestObjectFactory.createInstance('PrimitiveValueEntry');
+    expect(pv).instanceOf(PrimitiveValueEntry);
+    expect(pv.entryInfo).to.be.undefined;
+    expect(pv.value).to.be.undefined;
+    expect(pv.string).to.be.undefined;
   });
 
   it('should throw when you request an unknown element', () => {
@@ -41,5 +41,5 @@ describe('#NamespaceObjectFactory()', () => {
 });
 
 function importResult(path) {
-  return require(`../build/test/${path}`).default;
+  return require(`../build/test/es6/${path}`).default;
 }

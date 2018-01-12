@@ -8,11 +8,11 @@ setup('./test/fixtures/spec', './build/test', true);
 
 describe('#ObjectFactory()', () => {
   const ObjectFactory = importResult('ObjectFactory');
-  const PrimitiveValueEntry = importResult('shr/simple/PrimitiveValueEntry');
+  const StringValueEntry = importResult('shr/simple/StringValueEntry');
 
   it('should create classes by name', () => {
-    const pv = ObjectFactory.createInstance('http://standardhealthrecord.org/spec/shr/simple/PrimitiveValueEntry');
-    expect(pv).instanceOf(PrimitiveValueEntry);
+    const pv = ObjectFactory.createInstance('http://standardhealthrecord.org/spec/shr/simple/StringValueEntry');
+    expect(pv).instanceOf(StringValueEntry);
     expect(pv.entryInfo).to.be.undefined;
     expect(pv.value).to.be.undefined;
     expect(pv.string).to.be.undefined;
@@ -25,11 +25,11 @@ describe('#ObjectFactory()', () => {
 
 describe('#NamespaceObjectFactory()', () => {
   const ShrTestObjectFactory = importResult('shr/simple/ShrSimpleObjectFactory');
-  const PrimitiveValueEntry = importResult('shr/simple/PrimitiveValueEntry');
+  const StringValueEntry = importResult('shr/simple/StringValueEntry');
 
   it('should create classes by name', () => {
-    const pv = ShrTestObjectFactory.createInstance('PrimitiveValueEntry');
-    expect(pv).instanceOf(PrimitiveValueEntry);
+    const pv = ShrTestObjectFactory.createInstance('StringValueEntry');
+    expect(pv).instanceOf(StringValueEntry);
     expect(pv.entryInfo).to.be.undefined;
     expect(pv.value).to.be.undefined;
     expect(pv.string).to.be.undefined;

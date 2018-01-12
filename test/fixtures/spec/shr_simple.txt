@@ -2,11 +2,31 @@ Grammar:      DataElement 5.0
 Namespace:    shr.simple
 Uses:         shr.core
 
-Element:      PrimitiveValue
+Element:      StringValue
 Value:        string
 
-EntryElement: PrimitiveValueEntry
+EntryElement: StringValueEntry
 Value:        string
 
 EntryElement: ElementValueEntry
-Value:        PrimitiveValue
+Value:        StringValue
+
+Element:      CodeValue
+Value:        code
+
+EntryElement: CodeValueEntry
+Based on:     CodeValue
+
+EntryElement: CodeableConceptValueEntry
+Value:        CodeableConcept
+
+EntryElement: CodingValueEntry
+Value:        Coding
+
+EntryElement: RecursiveEntry
+Value:        integer
+0..*          RecursiveEntry
+
+EntryElement: ReferenceEntry
+Value:        ref(StringValueEntry)
+0..*          ref(CodeValueEntry)

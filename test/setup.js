@@ -7,12 +7,11 @@ const { exportToES6 } = require('../lib/export');
 
 function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false) {
   const configSpecs = shrTI.importConfigFromFilePath(inDir);
-  const specs = shrTI.importFromFilePath(inDir, configSpecs);
-  const expSpecs = shrEx.expand(specs);
+  const specs = shrEx.expand(shrTI.importFromFilePath(inDir, configSpecs));
 
   // Generate the JSON schemas
   const baseSchemaNamespace = 'https://standardhealthrecord.org/schema';
-  const jsonSchemaResults = shrJSE.exportToJSONSchema(expSpecs, baseSchemaNamespace, configSpecs.entryTypeURL);
+  const jsonSchemaResults = shrJSE.exportToJSONSchema(specs, baseSchemaNamespace, configSpecs.entryTypeURL);
 
   // Generate the ES6
   const results = exportToES6(specs);

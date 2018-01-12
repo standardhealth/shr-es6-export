@@ -11,11 +11,8 @@ Value:        string
 EntryElement: ElementValueEntry
 Value:        StringValue
 
-Element:      CodeValue
-Value:        code
-
 EntryElement: CodeValueEntry
-Based on:     CodeValue
+Value:        code
 
 EntryElement: CodeableConceptValueEntry
 Value:        CodeableConcept
@@ -30,3 +27,18 @@ Value:        integer
 EntryElement: ReferenceEntry
 Value:        ref(StringValueEntry)
 0..*          ref(CodeValueEntry)
+
+Element:      IntegerValueElement
+Value:        integer
+
+EntryElement: BasedOnIntegerValueElementEntry
+Based on:     IntegerValueElement
+1..1          StringValue
+
+Element:      StringValueChild
+Based on:     StringValue
+
+EntryElement: OverrideBasedOnIntegerValueElementEntry
+Based on:     BasedOnIntegerValueElementEntry
+StringValue is type StringValueChild
+

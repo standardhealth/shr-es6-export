@@ -155,6 +155,32 @@ describe('#ReferenceEntryClass()', () => {
   });
 });
 
+describe('#BasedOnIntegerValueElementEntryClass()', () => {
+  const BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry');
+  it('should deserialize a JSON instance', () => {
+    const json = getJSON('BasedOnIntegerValueElementEntry');
+    const entry = BasedOnIntegerValueElementEntry.fromJSON(json);
+    expect(entry).instanceOf(BasedOnIntegerValueElementEntry);
+    expectStandardEntryInfoValues(entry, 'http://standardhealthrecord.org/spec/shr/simple/BasedOnIntegerValueElementEntry');
+    expectIntegerValue(entry, 43);
+    expectInstanceOf(entry.stringValue, 'shr/simple/StringValue');
+    expectStringValue(entry.stringValue, 'Hello!');
+  });
+});
+
+describe('#OverrideBasedOnIntegerValueElementEntryClass()', () => {
+  const OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry');
+  it('should deserialize a JSON instance', () => {
+    const json = getJSON('OverrideBasedOnIntegerValueElementEntry');
+    const entry = OverrideBasedOnIntegerValueElementEntry.fromJSON(json);
+    expect(entry).instanceOf(OverrideBasedOnIntegerValueElementEntry);
+    expectStandardEntryInfoValues(entry, 'http://standardhealthrecord.org/spec/shr/simple/OverrideBasedOnIntegerValueElementEntry');
+    expectIntegerValue(entry, 43);
+    expectInstanceOf(entry.stringValue, 'shr/simple/StringValueChild');
+    expectStringValue(entry.stringValue, 'Hello!');
+  });
+});
+
 function expectInstanceOf(inst, fqn) {
   const fqnAsPath = fqn.split('.').join('/');
   expect(inst).to.be.instanceOf(importResult(fqnAsPath));

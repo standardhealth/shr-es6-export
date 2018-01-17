@@ -40,6 +40,18 @@ describe('#StringValueClass()', () => {
   });
 });
 
+describe('#ReservedWordEntryClass()', () => {
+  const ReservedWordEntry = importResult('shr/reserved/ReservedWordEntry');
+  it('should not use any keywords as variable names', () => {
+    // This test should have thrown an error by now if there is a reserved word violation, but just in case...
+    const pds = Object.getOwnPropertyDescriptors(ReservedWordEntry.prototype);
+    for (const rw of ['package', 'class', 'enum', 'await']) {
+      expect(pds[rw].set.toString()).to.contain(`function set(${rw}Var)`)
+        .and.to.contain(`this._${rw} = ${rw}Var;`);
+    }
+  });
+});
+
 function importResult(path) {
   return require(`../build/test/es6/${path}`).default;
 }

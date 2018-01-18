@@ -301,7 +301,7 @@ function getJSON(name, validate=true) {
       throw new Error(`Couldn't find entry type for ${name}`);
     }
     const entryType = json['shr.base.EntryType'].Value;
-    const matches = entryType.match(/^http:\/\/standardhealthrecord\.org\/spec\/(.*)\/[^\/]+$/);
+    const matches = entryType.match(/^http:\/\/standardhealthrecord\.org\/spec\/(.*)\/[^/]+$/);
     if (!matches) {
       throw new Error(`${name}'s entry type does not match expected format: ${entryType}`);
     }

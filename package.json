@@ -25,7 +25,7 @@
     "babel-register": "^6.26.0",
     "bunyan": "^1.8.9",
     "chai": "^3.5.0",
-    "eslint": "^3.6.1",
+    "eslint": "^4.15.0",
     "fs-extra": "^4.0.2",
     "mocha": "^3.2.0",
     "shr-expand": "^5.2.6",

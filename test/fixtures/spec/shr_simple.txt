@@ -44,3 +44,6 @@ StringValue is type StringValueChild
 
 EntryElement: ChoiceValueEntry
 Value:        string or decimal
+
+EntryElement: InheritBasedOnIntegerValueElementEntry
+Based on:     BasedOnIntegerValueElementEntry

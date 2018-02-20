@@ -149,24 +149,47 @@ describe('#ToJSON', () => {
       let gen_json = entry.toJSON();
       validateJSON('BasedOnIntegerValueElementEntry', gen_json);
     });
+  });
 
-    describe('#OverrideBasedOnIntegerValueElementEntryClass()', () => {
-      const OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry');
-      it('should serialize a JSON instance', () => {
-        const json = getJSON('OverrideBasedOnIntegerValueElementEntry');
-        const entry = OverrideBasedOnIntegerValueElementEntry.fromJSON(json);
-        expect(entry).instanceOf(OverrideBasedOnIntegerValueElementEntry);
-        
-        let gen_json = entry.toJSON();
-        validateJSON('OverrideBasedOnIntegerValueElementEntry', gen_json);
-      });
+  describe('#InheritBasedOnIntegerValueElementEntryClass()', () => {
+    const BasedOnIntegerValueElementEntry = importResult('shr/simple/InheritBasedOnIntegerValueElementEntry');
+    const InheritBasedOnIntegerValueElementEntry = importResult('shr/simple/InheritBasedOnIntegerValueElementEntry');
+    it('should serialize a JSON instance', () => {
+      const json = getJSON('InheritBasedOnIntegerValueElementEntry');
+      const entry = InheritBasedOnIntegerValueElementEntry.fromJSON(json);
+      expect(entry).instanceOf(InheritBasedOnIntegerValueElementEntry);
+      expect(entry).instanceOf(BasedOnIntegerValueElementEntry);
+
+      let gen_json = entry.toJSON();
+      validateJSON('InheritBasedOnIntegerValueElementEntry', gen_json);
+    });
+  });
+
+  describe('#OverrideBasedOnIntegerValueElementEntryClass()', () => {
+    const OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry');
+    it('should serialize a JSON instance', () => {
+      const json = getJSON('OverrideBasedOnIntegerValueElementEntry');
+      const entry = OverrideBasedOnIntegerValueElementEntry.fromJSON(json);
+      expect(entry).instanceOf(OverrideBasedOnIntegerValueElementEntry);
+
+      let gen_json = entry.toJSON();
+      validateJSON('OverrideBasedOnIntegerValueElementEntry', gen_json);
     });
   });
 
   describe('#ChoiceValueEntryClass()', () => {
     const ChoiceValueEntry = importResult('shr/simple/ChoiceValueEntry');
-    it('should serialize a JSON instance', () => {
-      const json = getJSON('ChoiceValueEntry');
+    it('should serialize a JSON instance with a string', () => {
+      const json = getJSON('ChoiceValueStringEntry');
+      const entry = ChoiceValueEntry.fromJSON(json);
+      expect(entry).instanceOf(ChoiceValueEntry);
+
+      let gen_json = entry.toJSON();
+      validateJSON('ChoiceValueEntry', gen_json);
+    });
+
+    it('should serialize a JSON instance with an integer', () => {
+      const json = getJSON('ChoiceValueIntEntry');
       const entry = ChoiceValueEntry.fromJSON(json);
       expect(entry).instanceOf(ChoiceValueEntry);
 

@@ -1,3 +1,5 @@
+import BasedOnIntegerValueElementEntry from '../build/test/es6/shr/simple/BasedOnIntegerValueElementEntry';
+
 const fs = require('fs');
 const {expect} = require('chai');
 const Ajv = require('ajv');
@@ -14,48 +16,37 @@ describe('#ToJSON', () => {
   describe('#StringValueEntryClass()', () => {
     const StringValueEntry = importResult('shr/simple/StringValueEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('StringValueEntry');
-      const entry = StringValueEntry.fromJSON(json);
-      expect(entry).instanceOf(StringValueEntry);
-
-      let gen_json = entry.toJSON();
-      validateJSON('StringValueEntry', gen_json);
+      testJSONRoundtrip('StringValueEntry', 'StringValueEntry', StringValueEntry);
     });
   });
 
   describe('#CodeValueEntryClass()', () => {
     const CodeValueEntry = importResult('shr/simple/CodeValueEntry');
     it('should serialize a JSON instance with a string code', () => {
-      const json = getJSON('CodeStringValueEntry');
-      const entry = CodeValueEntry.fromJSON(json);
-      expect(entry).instanceOf(CodeValueEntry);
-      
-      
-      let gen_json = entry.toJSON();
-      validateJSON('CodeStringValueEntry', gen_json);
+      testJSONRoundtrip('CodeStringValueEntry', 'CodeStringValueEntry', CodeValueEntry);
     });
     it('should serialize a JSON instance with an object code', () => {
+      // This one is special-cased; this JSON doesn't roundtrip
+      // because of the way Code objects are handled
       const json = getJSON('CodeObjectValueEntry');
       const entry = CodeValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeValueEntry);
       
       let gen_json = entry.toJSON();
       validateJSON('CodeObjectValueEntry', gen_json);
+      expect(gen_json['shr.base.EntryType']).to.eql({Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeValueEntry'});
+      expect(gen_json['Value']).to.equal('foo');
     });
   });
 
   describe('#CodingValueEntryClass()', () => {
     const CodingValueEntry = importResult('shr/simple/CodingValueEntry');
     it('should serialize a JSON instance with a string code', () => {
-      const json = getJSON('CodingStringValueEntry');
-      const entry = CodingValueEntry.fromJSON(json);
-      expect(entry).instanceOf(CodingValueEntry);
-      
-      
-      let gen_json = entry.toJSON();
-      validateJSON('CodingStringValueEntry', gen_json);
+      testJSONRoundtrip('CodingStringValueEntry', 'CodingStringValueEntry', CodingValueEntry);
     });
     it('should serialize a JSON instance with an object code', () => {
+      // This one is special-cased; this JSON doesn't roundtrip
+      // because of the way Coding objects are handled
       const json = getJSON('CodingObjectValueEntry');
       const entry = CodingValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodingValueEntry);
@@ -63,142 +54,156 @@ describe('#ToJSON', () => {
       
       let gen_json = entry.toJSON();
       validateJSON('CodingObjectValueEntry', gen_json);
+      expect(gen_json['shr.base.EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodingValueEntry' });
+      expect(gen_json['Value']['Value']).to.eql('foo');
     });
   });
 
   describe('#CodeableConceptValueEntryClass()', () => {
     const CodeableConceptValueEntry = importResult('shr/simple/CodeableConceptValueEntry');
     it('should serialize a JSON instance with a string code', () => {
-      const json = getJSON('CodeableConceptStringValueEntry');
-      const entry = CodeableConceptValueEntry.fromJSON(json);
-      expect(entry).instanceOf(CodeableConceptValueEntry);
-      
-      let gen_json = entry.toJSON();
-      validateJSON('CodeableConceptStringValueEntry', gen_json);
+      testJSONRoundtrip('CodeableConceptStringValueEntry', 'CodeableConceptStringValueEntry', CodeableConceptValueEntry);
     });
     it('should serialize a JSON instance with an object code', () => {
+      // This one is special-cased; this JSON doesn't roundtrip
+      // because of the way Code objects are handled
       const json = getJSON('CodeableConceptObjectValueEntry');
       const entry = CodeableConceptValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeableConceptValueEntry);
       
       let gen_json = entry.toJSON();
       validateJSON('CodeableConceptObjectValueEntry', gen_json);
+      expect(gen_json['shr.base.EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeableConceptValueEntry' });
+      expect(gen_json['Value']['shr.core.Coding']).to.be.an('array');
+      expect(gen_json['Value']['shr.core.Coding']).to.include({
+        'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/Coding' },
+        'shr.core.CodeSystem': {
+          'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/CodeSystem' },
+          Value: 'http://foo.org/bar'
+        },
+        'shr.core.DisplayText': {
+          'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/DisplayText' },
+          Value: 'Foo'
+        },
+        Value: 'foo'
+      });
+      expect(gen_json['Value']['shr.core.Coding']).to.include({
+        'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/Coding' },
+        'shr.core.CodeSystem': {
+          'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/CodeSystem' },
+          Value: 'http://foo.org/bar'
+        },
+        'shr.core.DisplayText': {
+          'shr.base.EntryType': { Value: 'http://standardhealthrecord.org/spec/shr/core/DisplayText' },
+          Value: 'Bar'
+        },
+        Value: 'bar'
+      });
     });
   });
 
   describe('#ElementValueEntryClass()', () => {
     const ElementValueEntry = importResult('shr/simple/ElementValueEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('ElementValueEntry');
-      const entry = ElementValueEntry.fromJSON(json);
-      expect(entry).instanceOf(ElementValueEntry);
-      
-      let gen_json = entry.toJSON();
-      validateJSON('ElementValueEntry', gen_json);
+      testJSONRoundtrip('ElementValueEntry', 'ElementValueEntry', ElementValueEntry);
     });
   });
 
   describe('#RecursiveEntryClass()', () => {
     const RecursiveEntry = importResult('shr/simple/RecursiveEntry');
-    it('should deserialize a JSON instance', () => {
+    it('should serialize a JSON instance', () => {
+      // This one is special cased because you're working with recursive entries
       const json = getJSON('RecursiveEntry');
       const entry = RecursiveEntry.fromJSON(json);
       expect(entry).instanceOf(RecursiveEntry);
       let gen_json = entry.toJSON();
       validateJSON('RecursiveEntry', gen_json);
+      expect(gen_json).to.eql(json);
       
       // Recursive child 1
       const child1 = entry.recursiveEntry[0];
       expect(child1).instanceOf(RecursiveEntry);
       let child1_json = child1.toJSON();
       validateJSON('RecursiveEntry', child1_json);
+      expect(gen_json).to.eql(json);
 
       // Recursive grandchild 1
       const grandchild1 = child1.recursiveEntry[0];
       expect(grandchild1).instanceOf(RecursiveEntry);
       let grandchild1_json = grandchild1.toJSON();
       validateJSON('RecursiveEntry', grandchild1_json);
+      expect(gen_json).to.eql(json);
 
       // Recursive child 2
       const child2 = entry.recursiveEntry[1];
       expect(child2).instanceOf(RecursiveEntry);
       let child2_json = child2.toJSON();
       validateJSON('RecursiveEntry', child2_json);
+      expect(gen_json).to.eql(json);
     });
   });
 
   describe('#ReferenceEntryClass()', () => {
     const ReferenceEntry = importResult('shr/simple/ReferenceEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('ReferenceEntry');
-      const entry = ReferenceEntry.fromJSON(json);
-      expect(entry).instanceOf(ReferenceEntry);
-      
-      let gen_json = entry.toJSON();
-      validateJSON('ReferenceEntry', gen_json);
+      testJSONRoundtrip('ReferenceEntry', 'ReferenceEntry', ReferenceEntry);
     });
   });
 
   describe('#BasedOnIntegerValueElementEntryClass()', () => {
     const BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('BasedOnIntegerValueElementEntry');
-      const entry = BasedOnIntegerValueElementEntry.fromJSON(json);
-      expect(entry).instanceOf(BasedOnIntegerValueElementEntry);
-      
-      let gen_json = entry.toJSON();
-      validateJSON('BasedOnIntegerValueElementEntry', gen_json);
+      testJSONRoundtrip('BasedOnIntegerValueElementEntry', 'BasedOnIntegerValueElementEntry', BasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#InheritBasedOnIntegerValueElementEntryClass()', () => {
-    const BasedOnIntegerValueElementEntry = importResult('shr/simple/InheritBasedOnIntegerValueElementEntry');
-    const InheritBasedOnIntegerValueElementEntry = importResult('shr/simple/InheritBasedOnIntegerValueElementEntry');
+    const BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('InheritBasedOnIntegerValueElementEntry');
-      const entry = InheritBasedOnIntegerValueElementEntry.fromJSON(json);
-      expect(entry).instanceOf(InheritBasedOnIntegerValueElementEntry);
-      expect(entry).instanceOf(BasedOnIntegerValueElementEntry);
-
-      let gen_json = entry.toJSON();
-      validateJSON('InheritBasedOnIntegerValueElementEntry', gen_json);
+      testJSONRoundtrip('BasedOnIntegerValueElementEntry', 'BasedOnIntegerValueElementEntry', BasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#OverrideBasedOnIntegerValueElementEntryClass()', () => {
     const OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry');
     it('should serialize a JSON instance', () => {
-      const json = getJSON('OverrideBasedOnIntegerValueElementEntry');
-      const entry = OverrideBasedOnIntegerValueElementEntry.fromJSON(json);
-      expect(entry).instanceOf(OverrideBasedOnIntegerValueElementEntry);
-
-      let gen_json = entry.toJSON();
-      validateJSON('OverrideBasedOnIntegerValueElementEntry', gen_json);
+      testJSONRoundtrip('OverrideBasedOnIntegerValueElementEntry', 'OverrideBasedOnIntegerValueElementEntry', OverrideBasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#ChoiceValueEntryClass()', () => {
     const ChoiceValueEntry = importResult('shr/simple/ChoiceValueEntry');
     it('should serialize a JSON instance with a string', () => {
-      const json = getJSON('ChoiceValueStringEntry');
-      const entry = ChoiceValueEntry.fromJSON(json);
-      expect(entry).instanceOf(ChoiceValueEntry);
-
-      let gen_json = entry.toJSON();
-      validateJSON('ChoiceValueEntry', gen_json);
+      testJSONRoundtrip('ChoiceValueStringEntry', 'ChoiceValueEntry', ChoiceValueEntry);
     });
 
     it('should serialize a JSON instance with an integer', () => {
-      const json = getJSON('ChoiceValueIntEntry');
-      const entry = ChoiceValueEntry.fromJSON(json);
-      expect(entry).instanceOf(ChoiceValueEntry);
+      testJSONRoundtrip('ChoiceValueIntEntry', 'ChoiceValueEntry', ChoiceValueEntry);
+    });
 
-      let gen_json = entry.toJSON();
-      validateJSON('ChoiceValueEntry', gen_json);
+    const ChoiceValueListEntry = importResult('shr/simple/ChoiceValueListEntry');
+    it('should serialize a JSON instance with a list of strings/Codings', () => {
+      testJSONRoundtrip('ChoiceValueListEntry', 'ChoiceValueListEntry', ChoiceValueListEntry)
     });
   });
 
 });
+
+/**
+ * 
+ * @param {string} jsonName
+ * @param {string} validationName
+ * @param {Object} clazz 
+ */
+function testJSONRoundtrip(jsonName, validationName, clazz) {
+  const json = getJSON(jsonName);
+  const entry = clazz.fromJSON(json);
+  expect(entry).instanceOf(clazz);
+
+  let gen_json = entry.toJSON();
+  validateJSON(validationName, gen_json);
+  expect(gen_json).to.eql(json);
+}
 
 function validateJSON(name, json) {
   if (!json['shr.base.EntryType'] || !json['shr.base.EntryType'].Value) {

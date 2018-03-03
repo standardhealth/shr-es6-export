@@ -34,6 +34,9 @@ Value:        integer
 EntryElement: OptionalIntegerValueEntry
 Value:        0..1 integer
 
+EntryElement: OptionalChoiceValueEntry
+Value:        0..1 integer or string
+
 EntryElement: BasedOnIntegerValueElementEntry
 Based on:     IntegerValueElement
 1..1          StringValue

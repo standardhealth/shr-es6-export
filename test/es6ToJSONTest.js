@@ -178,10 +178,31 @@ describe('#ToJSON', () => {
     it('should serialize a JSON instance with an integer', () => {
       testJSONRoundtrip('ChoiceValueIntEntry', 'ChoiceValueEntry', ChoiceValueEntry);
     });
+  });
 
+  describe('#ChoiceValueEntryListClass()', () => {
     const ChoiceValueListEntry = importResult('shr/simple/ChoiceValueListEntry');
     it('should serialize a JSON instance with a list of strings/Codings', () => {
       testJSONRoundtrip('ChoiceValueListEntry', 'ChoiceValueListEntry', ChoiceValueListEntry);
+    });
+
+    it('should serialize a JSON instance with no value', () => {
+      testJSONRoundtrip('ChoiceValueListEntryBlank', 'ChoiceValueListEntry', ChoiceValueListEntry);
+    });
+
+    it('should serialize a JSON instance with a value of []', () => {
+      testJSONRoundtrip('ChoiceValueListEntryEmpty', 'ChoiceValueListEntryEmpty', ChoiceValueListEntry);
+    });
+
+    it('should serialize a JSON instance with a null value', () => {
+      // This is special because null values are not allowed by the schema.
+      const json = context.getJSON('ChoiceValueListEntryBlank');
+      const entry = ChoiceValueListEntry.fromJSON(json);
+      expect(entry).instanceOf(ChoiceValueListEntry);
+      entry.value = null;
+      const gen_json = entry.toJSON();
+      context.validateJSON('ChoiceValueListEntryBlank', gen_json);
+      expect(gen_json).to.eql(json);
     });
   });
 
@@ -208,6 +229,36 @@ describe('#ToJSON', () => {
       const gen_json = entry.toJSON();
       context.validateJSON('OptionalIntegerValueEntryBlank', gen_json);
       expect(gen_json).to.eql(json);
+    });
+  });
+
+  describe('#OptionalChoiceValueEntryClass()', () => {
+    const OptionalChoiceValueEntry = importResult('shr/simple/OptionalChoiceValueEntry');
+    it('should serialize a JSON instance with a normal value', () => {
+      testJSONRoundtrip('OptionalChoiceValueEntry', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
+    });
+
+    it('should serialize a JSON instance with no value', () => {
+      testJSONRoundtrip('OptionalChoiceValueEntryBlank', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
+    });
+
+    it('should serialize a JSON instance with a value of ""', () => {
+      testJSONRoundtrip('OptionalChoiceValueEntryEmpty', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
+    });
+
+    it('should serialize a JSON instance with a null value', () => {
+      // This is special because null values are not allowed by the schema or the integer datatype.
+      const json = context.getJSON('OptionalChoiceValueEntryBlank');
+      const entry = OptionalChoiceValueEntry.fromJSON(json);
+      expect(entry).instanceOf(OptionalChoiceValueEntry);
+      entry.value = null;
+      const gen_json = entry.toJSON();
+      context.validateJSON('OptionalChoiceValueEntryBlank', gen_json);
+      expect(gen_json).to.eql(json);
+    });
+
+    it('should serialize a JSON instance with a "null" value', () => {
+      testJSONRoundtrip('OptionalChoiceValueEntryNullString', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
     });
   });
 });

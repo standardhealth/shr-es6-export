@@ -1,15 +1,15 @@
 import BasedOnIntegerValueElementEntry from '../build/test/es6/shr/simple/BasedOnIntegerValueElementEntry';
 
-const fs = require('fs');
 const {expect} = require('chai');
-const Ajv = require('ajv');
+const { TestContext, importResult } = require('./test_utils');
 const setup = require('./setup');
 require('babel-register')({
   presets: [ 'es2015' ]
 });
 
 setup('./test/fixtures/spec', './build/test', true);
-const ajv = setupAjv('./build/test/schema');
+const context = new TestContext();
+context.setupAjv('./build/test/schema');
 
 describe('#ToJSON', () => {
   
@@ -28,12 +28,12 @@ describe('#ToJSON', () => {
     it('should serialize a JSON instance with an object code', () => {
       // This one is special-cased; this JSON doesn't roundtrip
       // because of the way Code objects are handled
-      const json = getJSON('CodeObjectValueEntry');
+      const json = context.getJSON('CodeObjectValueEntry');
       const entry = CodeValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeValueEntry);
       
       let gen_json = entry.toJSON();
-      validateJSON('CodeObjectValueEntry', gen_json);
+      context.validateJSON('CodeObjectValueEntry', gen_json);
       expect(gen_json['shr.base.EntryType']).to.eql({Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeValueEntry'});
       expect(gen_json['Value']).to.equal('foo');
     });
@@ -47,13 +47,13 @@ describe('#ToJSON', () => {
     it('should serialize a JSON instance with an object code', () => {
       // This one is special-cased; this JSON doesn't roundtrip
       // because of the way Coding objects are handled
-      const json = getJSON('CodingObjectValueEntry');
+      const json = context.getJSON('CodingObjectValueEntry');
       const entry = CodingValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodingValueEntry);
       
       
       let gen_json = entry.toJSON();
-      validateJSON('CodingObjectValueEntry', gen_json);
+      context.validateJSON('CodingObjectValueEntry', gen_json);
       expect(gen_json['shr.base.EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodingValueEntry' });
       expect(gen_json['Value']['Value']).to.eql('foo');
     });
@@ -67,12 +67,12 @@ describe('#ToJSON', () => {
     it('should serialize a JSON instance with an object code', () => {
       // This one is special-cased; this JSON doesn't roundtrip
       // because of the way Code objects are handled
-      const json = getJSON('CodeableConceptObjectValueEntry');
+      const json = context.getJSON('CodeableConceptObjectValueEntry');
       const entry = CodeableConceptValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeableConceptValueEntry);
       
       let gen_json = entry.toJSON();
-      validateJSON('CodeableConceptObjectValueEntry', gen_json);
+      context.validateJSON('CodeableConceptObjectValueEntry', gen_json);
       expect(gen_json['shr.base.EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeableConceptValueEntry' });
       expect(gen_json['Value']['shr.core.Coding']).to.be.an('array');
       expect(gen_json['Value']['shr.core.Coding']).to.include({
@@ -113,32 +113,32 @@ describe('#ToJSON', () => {
     const RecursiveEntry = importResult('shr/simple/RecursiveEntry');
     it('should serialize a JSON instance', () => {
       // This one is special cased because you're working with recursive entries
-      const json = getJSON('RecursiveEntry');
+      const json = context.getJSON('RecursiveEntry');
       const entry = RecursiveEntry.fromJSON(json);
       expect(entry).instanceOf(RecursiveEntry);
       let gen_json = entry.toJSON();
-      validateJSON('RecursiveEntry', gen_json);
+      context.validateJSON('RecursiveEntry', gen_json);
       expect(gen_json).to.eql(json);
       
       // Recursive child 1
       const child1 = entry.recursiveEntry[0];
       expect(child1).instanceOf(RecursiveEntry);
       let child1_json = child1.toJSON();
-      validateJSON('RecursiveEntry', child1_json);
+      context.validateJSON('RecursiveEntry', child1_json);
       expect(gen_json).to.eql(json);
 
       // Recursive grandchild 1
       const grandchild1 = child1.recursiveEntry[0];
       expect(grandchild1).instanceOf(RecursiveEntry);
       let grandchild1_json = grandchild1.toJSON();
-      validateJSON('RecursiveEntry', grandchild1_json);
+      context.validateJSON('RecursiveEntry', grandchild1_json);
       expect(gen_json).to.eql(json);
 
       // Recursive child 2
       const child2 = entry.recursiveEntry[1];
       expect(child2).instanceOf(RecursiveEntry);
       let child2_json = child2.toJSON();
-      validateJSON('RecursiveEntry', child2_json);
+      context.validateJSON('RecursiveEntry', child2_json);
       expect(gen_json).to.eql(json);
     });
   });
@@ -196,53 +196,11 @@ describe('#ToJSON', () => {
  * @param {Object} clazz 
  */
 function testJSONRoundtrip(jsonName, validationName, clazz) {
-  const json = getJSON(jsonName);
+  const json = context.getJSON(jsonName);
   const entry = clazz.fromJSON(json);
   expect(entry).instanceOf(clazz);
 
   let gen_json = entry.toJSON();
-  validateJSON(validationName, gen_json);
+  context.validateJSON(validationName, gen_json);
   expect(gen_json).to.eql(json);
-}
-
-function validateJSON(name, json) {
-  if (!json['shr.base.EntryType'] || !json['shr.base.EntryType'].Value) {
-    throw new Error(`Couldn't find entry type for ${name}`);
-  }
-  const entryType = json['shr.base.EntryType'].Value;
-  const matches = entryType.match(/^http:\/\/standardhealthrecord\.org\/spec\/(.*)\/[^/]+$/);
-  if (!matches) {
-    throw new Error(`${name}'s entry type does not match expected format: ${entryType}`);
-  }
-  const schema = `${matches[1].split('/').join('.')}.schema.json`;
-  const valid = ajv.validate(schema, json);
-  expect(valid, ajv.errorsText()).to.be.true;
-}
-
-function getJSON(name, validate = true) {
-  const json = require(`./fixtures/instances/${name}.json`);
-  if (!json) {
-    throw new Error(`No JSON found for ${name}`);
-  }
-  if (validate) {
-    validateJSON(name, json);
-  }
-  return json;
-}
-
-function importResult(path) {
-  return require(`../build/test/es6/${path}`).default;
-}
-
-function setupAjv(schemaPath = './build/test/schema') {
-  const ajv = new Ajv();
-  // Add the JSON Schema DRAFT-04 meta schema
-  ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
-  // Add the generated schemas
-  for (const file of fs.readdirSync(schemaPath)) {
-    if (file.endsWith('schema.json')) {
-      ajv.addSchema(require(`../${schemaPath}/${file}`), file);
-    }
-  }
-  return ajv;
 }

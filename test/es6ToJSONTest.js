@@ -1,5 +1,3 @@
-import BasedOnIntegerValueElementEntry from '../build/test/es6/shr/simple/BasedOnIntegerValueElementEntry';
-
 const {expect} = require('chai');
 const { TestContext, importResult } = require('./test_utils');
 const setup = require('./setup');
@@ -183,7 +181,7 @@ describe('#ToJSON', () => {
 
     const ChoiceValueListEntry = importResult('shr/simple/ChoiceValueListEntry');
     it('should serialize a JSON instance with a list of strings/Codings', () => {
-      testJSONRoundtrip('ChoiceValueListEntry', 'ChoiceValueListEntry', ChoiceValueListEntry)
+      testJSONRoundtrip('ChoiceValueListEntry', 'ChoiceValueListEntry', ChoiceValueListEntry);
     });
   });
 

@@ -12,12 +12,12 @@ class TestContext {
       throw new Error(`Couldn't find entry type for ${name}`);
     }
     const entryType = json['shr.base.EntryType'].Value;
-    const matches = entryType.match(/^http:\/\/standardhealthrecord\.org\/spec\/(.*)\/[^/]+$/);
+    const matches = entryType.match(/^http:\/\/standardhealthrecord\.org\/spec\/(.*)\/([^/]+)$/);
     if (!matches) {
       throw new Error(`${name}'s entry type does not match expected format: ${entryType}`);
     }
-    const schema = `${matches[1].split('/').join('.')}.schema.json`;
-    const valid = this._ajv.validate(schema, json);
+    const schemaLocation = `https://standardhealthrecord.org/schema/${matches[1]}#/definitions/${matches[2]}`;
+    const valid = this._ajv.validate(schemaLocation, json);
     expect(valid, this._ajv.errorsText()).to.be.true;
   }
 

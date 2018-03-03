@@ -31,6 +31,9 @@ Value:        ref(StringValueEntry)
 Element:      IntegerValueElement
 Value:        integer
 
+EntryElement: OptionalIntegerValueEntry
+Value:        0..1 integer
+
 EntryElement: BasedOnIntegerValueElementEntry
 Based on:     IntegerValueElement
 1..1          StringValue

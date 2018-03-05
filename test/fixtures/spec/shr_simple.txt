@@ -40,6 +40,9 @@ Value:        0..1 integer or string
 EntryElement: OptionalFieldEntry
 0..1          IntegerValueElement
 
+EntryElement: OptionalElementValueEntry
+Value:        0..1 IntegerValueElement
+
 EntryElement: BasedOnIntegerValueElementEntry
 Based on:     IntegerValueElement
 1..1          StringValue

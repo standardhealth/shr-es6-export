@@ -239,6 +239,28 @@ describe('#ToJSON', () => {
     });
   });
 
+  describe('#OptionalElementValueEntryClass()', () => {
+    const OptionalElementValueEntry = importResult('shr/simple/OptionalElementValueEntry');
+    it('should serialize a JSON instance with a normal integer value', () => {
+      testJSONRoundtrip('OptionalElementValueEntry', 'OptionalElementValueEntry', OptionalElementValueEntry);
+    });
+
+    it('should serialize a JSON instance with no value', () => {
+      testJSONRoundtrip('OptionalElementValueEntryBlank', 'OptionalElementValueEntry', OptionalElementValueEntry);
+    });
+
+    it('should serialize a JSON instance with a value set to null', () => {
+      // This is special because null values are not allowed by the schema or the integer datatype.
+      const json = context.getJSON('OptionalElementValueEntryBlank');
+      const entry = OptionalElementValueEntry.fromJSON(json);
+      expect(entry).instanceOf(OptionalElementValueEntry);
+      entry.value = null;
+      const gen_json = entry.toJSON();
+      context.validateJSON('OptionalElementValueEntryBlank', gen_json);
+      expect(gen_json).to.eql(json);
+    });
+  });
+
   describe('#OptionalChoiceValueEntryClass()', () => {
     const OptionalChoiceValueEntry = importResult('shr/simple/OptionalChoiceValueEntry');
     it('should serialize a JSON instance with a normal value', () => {

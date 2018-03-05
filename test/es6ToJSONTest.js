@@ -138,6 +138,13 @@ describe('#ToJSON', () => {
       let child2_json = child2.toJSON();
       context.validateJSON('RecursiveEntry', child2_json);
       expect(gen_json).to.eql(json);
+
+      // Recursive child 2 with a null recursive entry
+      child2.recursiveEntry = null;
+      child2_json = child2.toJSON();
+      context.validateJSON('RecursiveEntry', child2_json);
+      gen_json = entry.toJSON();
+      expect(gen_json).to.eql(json);
     });
   });
 
@@ -259,6 +266,28 @@ describe('#ToJSON', () => {
 
     it('should serialize a JSON instance with a "null" value', () => {
       testJSONRoundtrip('OptionalChoiceValueEntryNullString', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
+    });
+  });
+
+  describe('#OptionalFieldEntryClass()', () => {
+    const OptionalFieldEntry = importResult('shr/simple/OptionalFieldEntry');
+    it('should serialize a JSON instance with a normal integer value', () => {
+      testJSONRoundtrip('OptionalFieldEntry', 'OptionalFieldEntry', OptionalFieldEntry);
+    });
+
+    it('should serialize a JSON instance with no value', () => {
+      testJSONRoundtrip('OptionalFieldEntryBlank', 'OptionalFieldEntry', OptionalFieldEntry);
+    });
+
+    it('should serialize a JSON instance with a null value', () => {
+      // This is special because null values are not allowed by the schema or the integer datatype.
+      const json = context.getJSON('OptionalFieldEntryBlank');
+      const entry = OptionalFieldEntry.fromJSON(json);
+      expect(entry).instanceOf(OptionalFieldEntry);
+      entry.integerValueElement = null;
+      const gen_json = entry.toJSON();
+      context.validateJSON('OptionalFieldEntryBlank', gen_json);
+      expect(gen_json).to.eql(json);
     });
   });
 });

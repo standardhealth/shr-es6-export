@@ -24,6 +24,10 @@ EntryElement: RecursiveEntry
 Value:        integer
 0..*          RecursiveEntry
 
+EntryElement: SingleRecursiveEntry
+Based on:     RecursiveEntry
+0..1          RecursiveEntry
+
 EntryElement: ReferenceEntry
 Value:        ref(StringValueEntry)
 0..*          ref(CodeValueEntry)

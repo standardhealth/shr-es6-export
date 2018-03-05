@@ -148,6 +148,34 @@ describe('#ToJSON', () => {
     });
   });
 
+  describe('#SingleRecursiveEntryClass()', () => {
+    const RecursiveEntry = importResult('shr/simple/RecursiveEntry');
+    const SingleRecursiveEntry = importResult('shr/simple/SingleRecursiveEntry');
+    it('should serialize a JSON instance', () => {
+      // This one is special cased because you're working with recursive entries
+      const json = context.getJSON('SingleRecursiveEntry');
+      const entry = SingleRecursiveEntry.fromJSON(json);
+      expect(entry).instanceOf(SingleRecursiveEntry);
+      let gen_json = entry.toJSON();
+      context.validateJSON('SingleRecursiveEntry', gen_json);
+      expect(gen_json).to.eql(json);
+
+      // Recursive child 1
+      const child1 = entry.recursiveEntry[0];
+      expect(child1).instanceOf(RecursiveEntry);
+      let child1_json = child1.toJSON();
+      context.validateJSON('RecursiveEntry', child1_json);
+      expect(gen_json).to.eql(json);
+
+      // Recursive grandchild 1
+      const grandchild1 = child1.recursiveEntry[0];
+      expect(grandchild1).instanceOf(SingleRecursiveEntry);
+      let grandchild1_json = grandchild1.toJSON();
+      context.validateJSON('SingleRecursiveEntry', grandchild1_json);
+      expect(gen_json).to.eql(json);
+    });
+  });
+
   describe('#ReferenceEntryClass()', () => {
     const ReferenceEntry = importResult('shr/simple/ReferenceEntry');
     it('should serialize a JSON instance', () => {

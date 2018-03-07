@@ -123,21 +123,18 @@ describe('#ToJSON', () => {
       expect(child1).instanceOf(RecursiveEntry);
       let child1_json = child1.toJSON();
       context.validateJSON('RecursiveEntry', child1_json);
-      expect(gen_json).to.eql(json);
 
       // Recursive grandchild 1
       const grandchild1 = child1.recursiveEntry[0];
       expect(grandchild1).instanceOf(RecursiveEntry);
       let grandchild1_json = grandchild1.toJSON();
       context.validateJSON('RecursiveEntry', grandchild1_json);
-      expect(gen_json).to.eql(json);
 
       // Recursive child 2
       const child2 = entry.recursiveEntry[1];
       expect(child2).instanceOf(RecursiveEntry);
       let child2_json = child2.toJSON();
       context.validateJSON('RecursiveEntry', child2_json);
-      expect(gen_json).to.eql(json);
 
       // Recursive child 2 with a null recursive entry
       child2.recursiveEntry = null;
@@ -156,7 +153,7 @@ describe('#ToJSON', () => {
       const json = context.getJSON('SingleRecursiveEntry');
       const entry = SingleRecursiveEntry.fromJSON(json);
       expect(entry).instanceOf(SingleRecursiveEntry);
-      let gen_json = entry.toJSON();
+      const gen_json = entry.toJSON();
       context.validateJSON('SingleRecursiveEntry', gen_json);
       expect(gen_json).to.eql(json);
 
@@ -165,14 +162,12 @@ describe('#ToJSON', () => {
       expect(child1).instanceOf(RecursiveEntry);
       let child1_json = child1.toJSON();
       context.validateJSON('RecursiveEntry', child1_json);
-      expect(gen_json).to.eql(json);
 
       // Recursive grandchild 1
       const grandchild1 = child1.recursiveEntry[0];
       expect(grandchild1).instanceOf(SingleRecursiveEntry);
       let grandchild1_json = grandchild1.toJSON();
       context.validateJSON('SingleRecursiveEntry', grandchild1_json);
-      expect(gen_json).to.eql(json);
     });
   });
 

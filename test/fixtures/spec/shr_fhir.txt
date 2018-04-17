@@ -1,0 +1,12 @@
+Grammar:    DataElement 5.0
+Namespace:  shr.fhir
+
+// contains sample elements that exercise FHIR mappings
+
+EntryElement: SingleDirectMapElement
+Description:	"Simple resource that maps directly to the FHIR Patient resource with a single element"
+0..1 			ActiveFlag
+
+	Element:   		ActiveFlag
+	Description:    "Is this simple patient resource active"
+	Value: 			boolean

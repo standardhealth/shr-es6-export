@@ -3,10 +3,11 @@ const fs = require('fs-extra');
 const { sanityCheckModules } = require('shr-models');
 const shrTI = require('shr-text-import');
 const shrEx = require('shr-expand');
+const shrFE = require('shr-fhir-export');
 const shrJSE = require('shr-json-schema-export');
 const { exportToES6 } = require('../lib/export');
 
-sanityCheckModules({shrTI, shrEx, shrJSE});
+sanityCheckModules({shrTI, shrEx, shrJSE, shrFE});
 
 function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false) {
   const configSpecs = shrTI.importConfigFromFilePath(inDir);
@@ -16,8 +17,11 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
   const baseSchemaNamespace = 'https://standardhealthrecord.org/schema';
   const jsonSchemaResults = shrJSE.exportToJSONSchema(specs, baseSchemaNamespace, configSpecs.entryTypeURL);
 
+  // Generate FHIR structure definitions
+  const fhirResults = shrFE.exportToFHIR(specs, configSpecs);
+
   // Generate the ES6
-  const results = exportToES6(specs);
+  const results = exportToES6(specs, fhirResults);
 
   if (clean) {
     fs.removeSync(outDir);

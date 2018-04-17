@@ -3,10 +3,18 @@ Namespace:  shr.fhir
 
 // contains sample elements that exercise FHIR mappings
 
-EntryElement: SingleDirectMapElement
-Description:	"Simple resource that maps directly to the FHIR Patient resource with a single element"
+EntryElement: PatientSingleConstraintEntry
+Description:	"Maps to the Patient resource with one cardinality-constrained field"
+1..1 			ActiveFlag
+
+	Element:   		ActiveFlag
+	Description:    "Is this simple patient resource active (added constraint)"
+	Value: 			boolean
+
+EntryElement: PatientDirectMapEntry
+Description:	"Maps directly to the Patient resource (no profile needed)"
 0..1 			ActiveFlag
 
 	Element:   		ActiveFlag
-	Description:    "Is this simple patient resource active"
+	Description:    "Is this simple patient resource active (direct map)"
 	Value: 			boolean

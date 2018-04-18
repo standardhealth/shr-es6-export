@@ -2,5 +2,8 @@ Grammar:   Map 5.0
 Namespace: shr.fhir
 Target:    FHIR_STU_3
 
-SimpleResource maps to Patient:
+PatientSingleConstraintEntry maps to Patient:
+	ActiveFlag maps to active
+
+PatientDirectMapEntry maps to Patient:
 	ActiveFlag maps to active

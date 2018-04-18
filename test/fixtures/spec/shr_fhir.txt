@@ -8,13 +8,9 @@ Description:	"Maps to the Patient resource with one cardinality-constrained fiel
 1..1 			ActiveFlag
 
 	Element:   		ActiveFlag
-	Description:    "Is this simple patient resource active (added constraint)"
+	Description:    "Is this simple patient resource active"
 	Value: 			boolean
 
 EntryElement: PatientDirectMapEntry
 Description:	"Maps directly to the Patient resource (no profile needed)"
 0..1 			ActiveFlag
-
-	Element:   		ActiveFlag
-	Description:    "Is this simple patient resource active (direct map)"
-	Value: 			boolean

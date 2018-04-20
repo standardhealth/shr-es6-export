@@ -49,6 +49,29 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
     fs.writeFileSync(path.join(jsonSchemaPath, filename), JSON.stringify(jsonSchemaResults[schemaId], null, 2));
   }
 
+  // Write the FHIR Profiles
+  const baseFHIRPath = `${outDir}/fhir/`;
+  const baseFHIRProfilesPath = path.join(baseFHIRPath, 'profiles');
+  fs.mkdirpSync(baseFHIRProfilesPath);
+  for (const profile of fhirResults.profiles) {
+    fs.writeFileSync(path.join(baseFHIRProfilesPath, `${profile.id}.json`), JSON.stringify(profile, null, 2));
+  }
+  const baseFHIRExtensionsPath = path.join(baseFHIRPath, 'extensions');
+  fs.mkdirpSync(baseFHIRExtensionsPath);
+  for (const extension of fhirResults.extensions) {
+    fs.writeFileSync(path.join(baseFHIRExtensionsPath, `${extension.id}.json`), JSON.stringify(extension, null, 2));
+  }
+  const baseFHIRCodeSystemsPath = path.join(baseFHIRPath, 'codeSystems');
+  fs.mkdirpSync(baseFHIRCodeSystemsPath);
+  for (const codeSystem of fhirResults.codeSystems) {
+    fs.writeFileSync(path.join(baseFHIRCodeSystemsPath, `${codeSystem.id}.json`), JSON.stringify(codeSystem, null, 2));
+  }
+  const baseFHIRValueSetsPath = path.join(baseFHIRPath, 'valueSets');
+  fs.mkdirpSync(baseFHIRValueSetsPath);
+  for (const valueSet of fhirResults.valueSets) {
+    fs.writeFileSync(path.join(baseFHIRValueSetsPath, `${valueSet.id}.json`), JSON.stringify(valueSet, null, 2));
+  }
+
   // Initialize the ES6 classes as required
   require(`${path.resolve(outDir)}/es6/init`);
 }

@@ -2,17 +2,21 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://standardhealth.org/fhir/json-schema/PatientSingleConstraintEntry",
   "$ref": "#/definitions/PatientSingleConstraintEntry",
-  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "PatientSingleConstraintEntry": {
-      "description": "A resource that includes narrative, extensions, and contained resources.",
+      "description": "A simple entry that constrains a FHIR resource",
       "properties": {
+        "resourceType": {
+          "description": "Patient resource type",
+          "type": "string",
+          "enum": ["Patient"]
+        },
         "active": {
           "description": "Active bit",
           "type": "boolean"
         }
       },
-      "required": ["active"]
+      "required": ["resourceType", "active"]
     }
   }
 }

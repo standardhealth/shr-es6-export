@@ -18,7 +18,7 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
   const jsonSchemaResults = shrJSE.exportToJSONSchema(specs, baseSchemaNamespace, configSpecs.entryTypeURL);
 
   // Generate FHIR structure definitions
-  const fhirResults = shrFE.exportToFHIR(specs, configSpecs);
+  const fhirResults = shrFE.exportToFHIR(specs, {...configSpecs, ...{retainMapping: true}});
 
   // Generate the ES6
   const results = exportToES6(specs, fhirResults);

@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://standardhealth.org/fhir/json-schema/PatientSingleConstraintEntry",
-  "$ref": "#/definitions/PatientSingleConstraintEntry",
+  "id": "http://standardhealth.org/fhir/json-schema/PatientConstraintsEntry",
+  "$ref": "#/definitions/PatientConstraintsEntry",
   "definitions": {
-    "PatientSingleConstraintEntry": {
+    "PatientConstraintsEntry": {
       "description": "A simple entry that constrains a FHIR resource",
       "properties": {
         "resourceType": {
@@ -14,9 +14,13 @@
         "active": {
           "description": "Active bit",
           "type": "boolean"
+        },
+        "birthDate": {
+          "description": "birthdate",
+          "type": "string"
         }
       },
-      "required": ["resourceType", "active"]
+      "required": ["resourceType", "active", "birthDate"]
     }
   }
 }

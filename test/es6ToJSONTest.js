@@ -7,7 +7,7 @@ require('babel-register')({
 
 setup('./test/fixtures/spec', './build/test', true);
 const context = new TestContext();
-context.setupAjv('./build/test/schema');
+context.setupAjvJson('./build/test/schema');
 
 describe('#ToJSON', () => {
   

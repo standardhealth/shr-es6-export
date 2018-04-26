@@ -5,7 +5,7 @@ Namespace:  shr.fhir
 
 EntryElement: PatientConstraintsEntry
 Description:	"Maps to the Patient resource with constraints"
-Value:        1..1 date
+Value:        date
 1..1 			ActiveFlag
 
 	Element:   		ActiveFlag

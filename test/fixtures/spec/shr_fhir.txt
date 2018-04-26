@@ -4,29 +4,16 @@ Uses: shr.simple
 
 // contains sample elements that exercise FHIR mappings
 
-EntryElement: PatientConstraintsEntry
-Description:	"Maps to the Patient resource with constraints"
-Value:        date
-1..1 			ActiveFlag
-1..1          Name
+EntryElement:   PatientEntry
+Description:    "Maps to the Patient resource with constraints"
+Value:          date
+1..1            BooleanValue
+1..1            StringValue
 
-	Element:   		ActiveFlag
-	Description:    "Is this simple patient resource active"
-	Value: 			boolean
+EntryElement:   PatientDirectMapEntry
+Description:    "Maps directly to the Patient resource (no profile needed)"
+0..1            BooleanValue
 
-	Element:   		Name
-	Description:    "Name"
-	Value: 			string
-
-EntryElement: PatientDirectMapEntry
-Description:	"Maps directly to the Patient resource (no profile needed)"
-0..1 			ActiveFlag
-
-EntryElement: PractitionerEntry
-Description:	"Maps to Practiioner"
-1..1 			IndirectActiveFlag
-
-	Element:   		IndirectActiveFlag
-	Description:    "Indirect Active Flag"
-    1..1           IntegerValueElement
-    1..1           ActiveFlag
+EntryElement:   PractitionerEntry
+Description:    "Maps to Practiioner"
+1..1            DoubleNestedBooleanValue

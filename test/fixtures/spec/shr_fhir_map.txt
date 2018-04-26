@@ -2,14 +2,13 @@ Grammar:   Map 5.0
 Namespace: shr.fhir
 Target:    FHIR_STU_3
 
-PatientConstraintsEntry maps to Patient:
+PatientEntry maps to Patient:
 	Value maps to birthDate
-	ActiveFlag maps to active
-	Name maps to name.text
-
+	BooleanValue maps to active
+	StringValue maps to name.text
 
 PatientDirectMapEntry maps to Patient:
-	ActiveFlag maps to active
+	BooleanValue maps to active
 
 PractitionerEntry maps to Practitioner:
-    IndirectActiveFlag.ActiveFlag maps to active
+    DoubleNestedBooleanValue.NestedBooleanValue.BooleanValue maps to active

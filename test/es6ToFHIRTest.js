@@ -11,14 +11,14 @@ context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
 
 describe('#ToFHIR', () => {
   
-  describe('#PatientConstraintsEntry()', () => {
-    const PatientConstraintsEntry = importResult('shr/fhir/PatientConstraintsEntry');
-    it('should serialize to a validated PatientConstraintsEntry instance', () => {
-      const json = context.getJSON('PatientConstraintsEntry', false);
-      const entry = PatientConstraintsEntry.fromJSON(json);
+  describe('#PatientEntry()', () => {
+    const PatientEntry = importResult('shr/fhir/PatientEntry');
+    it('should serialize to a validated PatientEntry instance', () => {
+      const json = context.getJSON('PatientEntry', false);
+      const entry = PatientEntry.fromJSON(json);
       const fhir = entry.toFHIR();
       expect(fhir).is.a('object');
-      context.validateFHIR('PatientConstraintsEntry', fhir);
+      context.validateFHIR('PatientEntry', fhir);
     });
   });
 

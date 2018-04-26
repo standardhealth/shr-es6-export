@@ -1,5 +1,6 @@
 Grammar:    DataElement 5.0
 Namespace:  shr.fhir
+Uses: shr.simple
 
 // contains sample elements that exercise FHIR mappings
 
@@ -7,11 +8,25 @@ EntryElement: PatientConstraintsEntry
 Description:	"Maps to the Patient resource with constraints"
 Value:        date
 1..1 			ActiveFlag
+1..1          Name
 
 	Element:   		ActiveFlag
 	Description:    "Is this simple patient resource active"
 	Value: 			boolean
 
+	Element:   		Name
+	Description:    "Name"
+	Value: 			string
+
 EntryElement: PatientDirectMapEntry
 Description:	"Maps directly to the Patient resource (no profile needed)"
 0..1 			ActiveFlag
+
+EntryElement: PractitionerEntry
+Description:	"Maps to Practiioner"
+1..1 			IndirectActiveFlag
+
+	Element:   		IndirectActiveFlag
+	Description:    "Indirect Active Flag"
+    1..1           IntegerValueElement
+    1..1           ActiveFlag

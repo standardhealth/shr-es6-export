@@ -22,4 +22,15 @@ describe('#ToFHIR', () => {
     });
   });
 
+  describe('#PractitionerEntry()', () => {
+    const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
+    it('should serialize to a validated PractitionerEntry instance', () => {
+      const json = context.getJSON('PractitionerEntry', false);
+      const entry = PractitionerEntry.fromJSON(json);
+      const fhir = entry.toFHIR();
+      expect(fhir).is.a('object');
+      context.validateFHIR('PractitionerEntry', fhir);
+    });
+  });
+
 });

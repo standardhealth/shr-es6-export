@@ -5,6 +5,11 @@ Target:    FHIR_STU_3
 PatientConstraintsEntry maps to Patient:
 	Value maps to birthDate
 	ActiveFlag maps to active
+	Name maps to name.text
+
 
 PatientDirectMapEntry maps to Patient:
 	ActiveFlag maps to active
+
+PractitionerEntry maps to Practitioner:
+    IndirectActiveFlag.ActiveFlag maps to active

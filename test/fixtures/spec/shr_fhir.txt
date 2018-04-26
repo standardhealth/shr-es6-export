@@ -3,8 +3,9 @@ Namespace:  shr.fhir
 
 // contains sample elements that exercise FHIR mappings
 
-EntryElement: PatientSingleConstraintEntry
-Description:	"Maps to the Patient resource with one cardinality-constrained field"
+EntryElement: PatientConstraintsEntry
+Description:	"Maps to the Patient resource with constraints"
+Value:        date
 1..1 			ActiveFlag
 
 	Element:   		ActiveFlag

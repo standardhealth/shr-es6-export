@@ -20,5 +20,5 @@
     "Value": true
   },
   "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/fhir/PatientConstraintsEntry" },
-  "Value": "2017-12-05T23:45:01Z"
+  "Value": "2017-12-05"
 }

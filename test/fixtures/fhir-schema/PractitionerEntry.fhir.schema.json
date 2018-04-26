@@ -14,9 +14,20 @@
         "active": {
           "description": "Active bit",
           "type": "boolean"
+        },
+        "name": {
+          "descripiton": "name",
+          "type": "object",
+          "properties": {
+            "text": {
+              "description": "name",
+              "type": "string"
+            }
+          },
+          "required": ["text"]
         }
       },
-      "required": ["resourceType", "active"]
+      "required": ["resourceType", "active", "name"]
     }
   }
 }

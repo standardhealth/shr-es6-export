@@ -5,6 +5,9 @@ Uses:         shr.core
 Element:      StringValue
 Value:        string
 
+Element:      NestedStringValue
+Value:        StringValue
+
 EntryElement: StringValueEntry
 Value:        string
 

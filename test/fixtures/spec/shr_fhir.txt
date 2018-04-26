@@ -17,3 +17,4 @@ Description:    "Maps directly to the Patient resource (no profile needed)"
 EntryElement:   PractitionerEntry
 Description:    "Maps to Practiioner"
 1..1            DoubleNestedBooleanValue
+1..1            NestedStringValue

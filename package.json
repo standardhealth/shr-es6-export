@@ -29,7 +29,7 @@
     "fs-extra": "^4.0.2",
     "mocha": "^3.2.0",
     "shr-expand": "^5.2.6",
-    "shr-json-schema-export": "^5.2.0",
+    "shr-json-schema-export": "https://github.com/standardhealth/shr-json-schema-export#flux_b",
     "shr-models": "^5.2.2",
     "shr-test-helpers": "^5.1.1",
     "shr-text-import": "^5.2.3"

@@ -19,6 +19,10 @@
           "description": "birthdate",
           "type": "string"
         },
+        "deceasedBoolean": {
+          "description": "Deceased",
+          "type": "boolean"
+        },
         "name": {
           "descripiton": "name",
           "type": "object",
@@ -31,7 +35,7 @@
           "required": ["text"]
         }
       },
-      "required": ["resourceType", "active", "birthDate", "name"]
+      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean"]
     }
   }
 }

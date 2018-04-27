@@ -7,6 +7,10 @@ PatientEntry maps to Patient:
 	BooleanValue maps to active
 	StringValue maps to name.text
 	Deceased maps to deceased[x].boolean
+	PhotoNote maps to photo
+
+PhotoNote maps to Attachment:
+    Value maps to title
 
 PatientDirectMapEntry maps to Patient:
 	BooleanValue maps to active

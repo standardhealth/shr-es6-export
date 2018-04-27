@@ -33,6 +33,22 @@
             }
           },
           "required": ["text"]
+        },
+        "photo": {
+          "descripiton": "photo",
+          "type": "array",
+          "items": [
+            {    
+              "type": "object",
+              "properties": {
+                "title": {
+                  "description": "title",
+                  "type": "string"
+                }
+              },
+              "required": ["title"]
+            }
+          ]
         }
       },
       "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean"]

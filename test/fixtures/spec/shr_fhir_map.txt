@@ -6,6 +6,7 @@ PatientEntry maps to Patient:
 	Value maps to birthDate
 	BooleanValue maps to active
 	StringValue maps to name.text
+	Deceased maps to deceased[x].boolean
 
 PatientDirectMapEntry maps to Patient:
 	BooleanValue maps to active

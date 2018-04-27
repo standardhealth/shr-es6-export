@@ -9,6 +9,10 @@ Description:    "Maps to the Patient resource with constraints"
 Value:          date
 1..1            BooleanValue
 1..1            StringValue
+1..1            Deceased
+
+Element:        Deceased
+Value:          boolean
 
 EntryElement:   PatientDirectMapEntry
 Description:    "Maps directly to the Patient resource (no profile needed)"

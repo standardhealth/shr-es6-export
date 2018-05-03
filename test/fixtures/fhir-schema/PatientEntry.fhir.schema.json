@@ -18,9 +18,20 @@
         "birthDate": {
           "description": "birthdate",
           "type": "string"
+        },
+        "name": {
+          "descripiton": "name",
+          "type": "object",
+          "properties": {
+            "text": {
+              "description": "name",
+              "type": "string"
+            }
+          },
+          "required": ["text"]
         }
       },
-      "required": ["resourceType", "active", "birthDate"]
+      "required": ["resourceType", "active", "birthDate", "name"]
     }
   }
 }

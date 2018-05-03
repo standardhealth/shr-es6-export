@@ -15,14 +15,14 @@
     "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
     "Value": "2017-12-05T23:45:01Z"
   },
-  "shr.fhir.ActiveFlag": {
-    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/fhir/ActiveFlag" },
+  "shr.fhir.BooleanValue": {
+    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/BooleanValue" },
     "Value": true
   },
-  "shr.fhir.Name": {
-    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/fhir/Name" },
+  "shr.fhir.StringValue": {
+    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/StringValue" },
     "Value": "Rob"
   },
-  "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/fhir/PatientConstraintsEntry" },
+  "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/fhir/PatientEntry" },
   "Value": "2017-12-05"
 }

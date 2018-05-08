@@ -19,6 +19,10 @@
           "description": "birthdate",
           "type": "string"
         },
+        "deceasedBoolean": {
+          "description": "Deceased",
+          "type": "boolean"
+        },
         "name": {
           "descripiton": "name",
           "type": "object",
@@ -29,9 +33,25 @@
             }
           },
           "required": ["text"]
+        },
+        "photo": {
+          "descripiton": "photo",
+          "type": "array",
+          "items": [
+            {    
+              "type": "object",
+              "properties": {
+                "title": {
+                  "description": "title",
+                  "type": "string"
+                }
+              },
+              "required": ["title"]
+            }
+          ]
         }
       },
-      "required": ["resourceType", "active", "birthDate", "name"]
+      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean"]
     }
   }
 }

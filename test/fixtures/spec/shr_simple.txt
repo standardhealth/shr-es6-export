@@ -39,7 +39,7 @@ Element:      IntegerValueElement
 Value:        integer
 
 Element:      DecimalValueElement
-Value:        integer
+Value:        decimal
 
 EntryElement: OptionalIntegerValueEntry
 Value:        0..1 integer

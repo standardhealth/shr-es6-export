@@ -132,6 +132,8 @@
               "required": ["url","extension"]
             }
           ],
+          "minItems": 3,
+          "maxItems": 3,
           "additionalItems": false
         }
       },

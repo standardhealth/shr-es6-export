@@ -10,6 +10,17 @@ const context = new TestContext();
 context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
 
 describe('#ToFHIR', () => {
+
+  describe('#PatientDirectMapEntry()', () => {
+    const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
+    it('should serialize to a validated PatientDirectMapEntry instance', () => {
+      const json = context.getJSON('PatientDirectMapEntry', false);
+      const entry = PatientDirectMapEntry.fromJSON(json);
+      const fhir = entry.toFHIR();
+      expect(fhir).is.a('object');
+      context.validateFHIR('PatientDirectMapEntry', fhir);
+    });
+  });
   
   describe('#PatientEntry()', () => {
     const PatientEntry = importResult('shr/fhir/PatientEntry');

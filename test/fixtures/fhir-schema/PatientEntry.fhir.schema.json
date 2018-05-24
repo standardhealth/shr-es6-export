@@ -98,8 +98,7 @@
                       "properties": {
                         "url": {
                           "description": "url",
-                          "type": "string",
-                          "enum": ["StringValue"]
+                          "type": "string"
                         },
                         "valueString": {
                           "description": "value string",
@@ -114,8 +113,7 @@
                       "proprties": {
                         "url": {
                           "description": "url",
-                          "type": "boolean",
-                          "enum": ["BooleanValue"]
+                          "type": "string"
                         },
                         "valueBoolean": {
                           "description": "value boolean",

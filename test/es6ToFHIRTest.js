@@ -17,7 +17,6 @@ describe('#ToFHIR', () => {
       const json = context.getJSON('PatientEntry', false);
       const entry = PatientEntry.fromJSON(json);
       const fhir = entry.toFHIR();
-      debugger
       expect(fhir).is.a('object');
       context.validateFHIR('PatientEntry', fhir);
     });

@@ -12,7 +12,7 @@ class TestContext {
   // Ajv had probelems validating against the official FHIR schemas, and us-core doesn't have json schemas
   validateFHIR(name, fhir) {
 
-    const valid = this._ajvFhir.validate(`${name}.fhir.schema.json`, fhir)
+    const valid = this._ajvFhir.validate(`${name}.fhir.schema.json`, fhir);
 
     expect(valid, this._ajvFhir.errorsText()).to.be.true;
   }

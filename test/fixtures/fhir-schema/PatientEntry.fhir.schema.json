@@ -49,9 +49,93 @@
               "required": ["title"]
             }
           ]
+        },
+        "extension": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "url",
+                  "type": "string"
+                },
+                "valueInteger": {
+                  "description": "integer",
+                  "type": "number",
+                  "enum": [19]
+                }
+              },
+              "required": ["url","valueInteger"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "url",
+                  "type": "string"
+                },
+                "valueDecimal": {
+                  "description": "decimal",
+                  "type": "number",
+                  "enum": [12.1]
+                }
+              },
+              "required": ["url","valueDecimal"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "url",
+                  "type": "string"
+                },
+                "extension": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "description": "url",
+                          "type": "string"
+                        },
+                        "valueString": {
+                          "description": "value string",
+                          "type": "string",
+                          "enum": ["MyString"]
+                        }
+                      },
+                      "required": ["url","valueString"]
+                    },
+                    {
+                      "type": "object",
+                      "proprties": {
+                        "url": {
+                          "description": "url",
+                          "type": "string"
+                        },
+                        "valueBoolean": {
+                          "description": "value boolean",
+                          "type": "boolean",
+                          "enum": [true]
+                        }
+                      },
+                      "required": ["url","valueBoolean"]
+                    }
+                  ],
+                  "additionalItems": false
+                }
+              },
+              "required": ["url","extension"]
+            }
+          ],
+          "minItems": 3,
+          "maxItems": 3,
+          "additionalItems": false
         }
       },
-      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean"]
+      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean","extension"]
     }
   }
 }

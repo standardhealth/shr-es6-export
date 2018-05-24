@@ -53,7 +53,7 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
   const baseFHIRPath = `${outDir}/fhir/`;
   const baseFHIRNoDiffProfilesPath = path.join(baseFHIRPath, 'noDiffProfiles');
   fs.mkdirpSync(baseFHIRNoDiffProfilesPath);
-  for (const profile of fhirResults.noDiffProfiles) {
+  for (const profile of fhirResults._noDiffProfiles) {
     fs.writeFileSync(path.join(baseFHIRNoDiffProfilesPath, `${profile.id}.json`), JSON.stringify(profile, null, 2));
   }
   const baseFHIRProfilesPath = path.join(baseFHIRPath, 'profiles');

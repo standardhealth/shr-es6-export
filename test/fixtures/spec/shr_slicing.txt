@@ -1,0 +1,52 @@
+Grammar:    DataElement 5.0
+Namespace:  shr.slicing
+Uses: shr.simple
+
+Element: BP
+0..1 SystolicPressure
+0..1 DiastolicPressure
+
+Element:		SystolicPressure
+Based on: EvaluationComponent
+Concept:		LNC#8480-6
+Value:			string
+
+Element:		DiastolicPressure
+Based on: EvaluationComponent
+Concept:		LNC#8462-4
+Value:			string
+
+Element: EvaluationComponent
+Value: string
+
+Element: 		Observation
+0..1			PersonOfRecord
+0..1			SubjectIfNotPersonOfRecord
+0..1			AnyPersonOrOrganization
+0..1			Recorded
+0..1			Signed  // Author
+1..1			ObservationTopic
+1..1			ObservationContext
+
+Element: Foo
+Based on: Observation
+
+Element: FooA
+Based on: Foo
+
+Element: FooB
+Based on: Foo
+
+EntryElement: Bar
+Based on: Observation
+0..1 Baz
+
+EntryElement: BarA
+Based on: Bar
+Baz.Foo
+  includes 0..1 FooA
+  includes 0..1 FooB
+
+Element: Baz
+0..* ref(Foo)
+

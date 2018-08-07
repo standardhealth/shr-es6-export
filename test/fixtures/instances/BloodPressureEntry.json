@@ -1,0 +1,41 @@
+{
+  "shr.base.EntryId": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/base/EntryId"
+    },
+    "Value": "1-1"
+  },
+  "shr.base.ShrId": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/base/ShrId"
+    },
+    "Value": "1"
+  },
+  "shr.core.CreationTime": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"
+    },
+    "Value": "2018-08-06T12:34:56Z"
+  },
+  "shr.base.LastUpdated": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"
+    },
+    "Value": "2018-08-06T12:34:56Z"
+  },
+  "shr.base.EntryType": {
+    "Value": "http://standardhealthrecord.org/spec/shr/fhir/BloodPressureEntry"
+  },
+  "shr.slicing.SystolicPressure": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/slicing/SystolicPressure"
+    },
+    "Value": "Systolic"
+  },
+  "shr.slicing.DiastolicPressure": {
+    "shr.base.EntryType": {
+      "Value": "http://standardhealthrecord.org/spec/shr/slicing/DiastolicPressure"
+    },
+    "Value": "Diastolic"
+  }
+}

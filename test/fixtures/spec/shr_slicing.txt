@@ -2,7 +2,7 @@ Grammar:    DataElement 5.0
 Namespace:  shr.slicing
 Uses: shr.simple
 
-Element: BP
+EntryElement: BloodPressureEntry
 0..1 SystolicPressure
 0..1 DiastolicPressure
 

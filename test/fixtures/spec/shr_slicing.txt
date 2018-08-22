@@ -19,7 +19,7 @@ Value:			string
 Element: EvaluationComponent
 Value: string
 
-Element: 		Observation
+EntryElement: 		Observation
 0..1			PersonOfRecord
 0..1			SubjectIfNotPersonOfRecord
 0..1			AnyPersonOrOrganization
@@ -37,16 +37,15 @@ Based on: Foo
 Element: FooB
 Based on: Foo
 
-EntryElement: Bar
+Element: Bar
 Based on: Observation
 0..1 Baz
 
-EntryElement: BarA
+EntryElement: BarAEntry
 Based on: Bar
 Baz.Foo
-  includes 0..1 FooA
-  includes 0..1 FooB
+  includes 0..1 ref(FooA)
+  includes 0..1 ref(FooB)
 
 Element: Baz
 0..* ref(Foo)
-

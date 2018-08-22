@@ -44,7 +44,7 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#BloodPressure()', () => {
+  describe('#BloodPressureEntry()', () => {
     const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
     it('should serialize to a validated BloodPressureEntry instance', () => {
       const json = context.getJSON('BloodPressureEntry', false);
@@ -52,6 +52,17 @@ describe('#ToFHIR', () => {
       const fhir = entry.toFHIR();
       expect(fhir).is.a('object');
       context.validateFHIR('BloodPressureEntry', fhir);
+    });
+  });
+
+  describe('#BarAEntry()', () => {
+    const BarAEntry = importResult('shr/slicing/BarAEntry');
+    it('should serialize to a validated BarAEntry instance', () => {
+      const json = context.getJSON('BarAEntry', false);
+      const entry = BarAEntry.fromJSON(json);
+      const fhir = entry.toFHIR();
+      expect(fhir).is.a('object');
+      context.validateFHIR('BarAEntry', fhir);
     });
   });
 

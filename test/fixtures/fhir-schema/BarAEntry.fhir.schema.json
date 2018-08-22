@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://standardhealth.org/fhir/json-schema/BarAEntry",
+  "$ref": "#/definitions/BarAEntry",
+  "definitions": {
+    "BarAEntry": {
+      "description": "A simple entry that constrains a FHIR resource",
+      "properties": {
+        "resourceType": {
+          "description": "Observation resource type",
+          "type": "string",
+          "enum": ["Observation"]
+        },
+        "related": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "target": {
+                "type": "object",
+                "properties": {
+                  "_ShrId": {
+                    "type": "string"
+                  },
+                  "_EntryId": {
+                    "type": "string"
+                  },
+                  "_entryType": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            
+          }
+        }
+      },
+      "required": ["resourceType", "related"]
+    }
+  }
+}

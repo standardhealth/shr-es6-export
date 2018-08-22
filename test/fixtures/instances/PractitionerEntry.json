@@ -1,36 +1,36 @@
 {
-  "shr.base.EntryId": {
-    "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/EntryId" },
+  "EntryId": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/EntryId" },
     "Value": "1-1"
   },
-  "shr.base.ShrId": {
-    "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/ShrId" },
+  "ShrId": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/ShrId" },
     "Value": "1"
   },
-  "shr.core.CreationTime": {
-    "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
+  "CreationTime": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
     "Value": "2017-11-30T12:34:56Z"
   },
-  "shr.base.LastUpdated": {
-    "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
+  "LastUpdated": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
     "Value": "2017-12-05T23:45:01Z"
   },
-  "shr.fhir.NestedStringValue": {
-    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/NestedStringValue" },
-    "shr.fhir.StringValue": {
-      "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/StringValue" },
+  "NestedStringValue": {
+    "EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/NestedStringValue" },
+    "StringValue": {
+      "EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/StringValue" },
       "Value": "Rob"
     }
   },
-  "shr.simple.DoubleNestedBooleanValue": {
-    "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/DoubleNestedBooleanValue" },
-    "shr.simple.NestedBooleanValue": {
-      "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/NestedBooleanValue" },
-      "shr.simple.BooleanValue": {
-        "shr.base.EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/BooleanValue" },
+  "DoubleNestedBooleanValue": {
+    "EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/DoubleNestedBooleanValue" },
+    "NestedBooleanValue": {
+      "EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/NestedBooleanValue" },
+      "BooleanValue": {
+        "EntryType": { "Value" : "http://standardhealthrecord.org/spec/shr/simple/BooleanValue" },
         "Value": true
       }
     }
   },
-  "shr.base.EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/fhir/PractitionerEntry" }
+  "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/fhir/PractitionerEntry" }
 }

@@ -1415,9 +1415,9 @@ shr-expand@^5.5.1:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/shr-expand/-/shr-expand-5.5.1.tgz#e8d3c0cebe9bf05d663f2e90d7ff439b39f1a82c"
 
-shr-fhir-export@^5.5.1:
+shr-fhir-export@standardhealth/shr-fhir-export#to_fhir_slicing:
   version "5.6.1"
-  resolved "https://registry.yarnpkg.com/shr-fhir-export/-/shr-fhir-export-5.6.1.tgz#acb6380380d7b626c7d8b73cd8358d035fcc6e98"
+  resolved "https://codeload.github.com/standardhealth/shr-fhir-export/tar.gz/0fbc8047777b783c63ef85a93c82830f1f5badc0"
   dependencies:
     fs-extra "^2.0.0"
     lodash "^4.17.5"

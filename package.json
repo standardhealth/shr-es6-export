@@ -33,7 +33,7 @@
     "shr-models": "^5.5.2",
     "shr-test-helpers": "^5.1.3",
     "shr-text-import": "^5.4.0",
-    "shr-fhir-export": "^5.5.1"
+    "shr-fhir-export": "standardhealth/shr-fhir-export#to_fhir_slicing"
   },
   "peerDependencies": {
     "shr-models": "^5.2.2"

@@ -133,9 +133,14 @@
           "minItems": 3,
           "maxItems": 3,
           "additionalItems": false
+        },
+        "id": {
+          "description": "ID of the FHIR object instance",
+          "type": "string",
+          "value": "1-1"
         }
       },
-      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean","extension"]
+      "required": ["resourceType", "active", "birthDate", "name", "deceasedBoolean", "extension", "id"]
     }
   }
 }

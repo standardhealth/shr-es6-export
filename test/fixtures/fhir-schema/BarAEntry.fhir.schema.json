@@ -77,9 +77,14 @@
               }
             ]
           }
+        },
+        "id": {
+          "description": "ID of the FHIR object instance",
+          "type": "string",
+          "value": "1-1"
         }
       },
-      "required": ["resourceType", "related"]
+      "required": ["resourceType", "related", "id"]
     }
   }
 }

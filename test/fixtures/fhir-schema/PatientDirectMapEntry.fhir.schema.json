@@ -15,9 +15,14 @@
           "description": "Active bit",
           "type": "boolean",
           "enum": [true]
+        },
+        "id": {
+          "description": "ID of the FHIR object instance",
+          "type": "string",
+          "value": "1-1"
         }
       },
-      "required": ["resourceType", "active"]
+      "required": ["resourceType", "active", "id"]
     }
   }
 }

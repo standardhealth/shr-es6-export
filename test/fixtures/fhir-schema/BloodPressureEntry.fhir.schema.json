@@ -22,9 +22,14 @@
           "minItems": 2,
           "maxItems": 2,
           "uniqueItems": true
+        },
+        "id": {
+          "description": "ID of the FHIR object instance",
+          "type": "string",
+          "value": "1-1"
         }
       },
-      "required": ["resourceType", "component"]
+      "required": ["resourceType", "component", "id"]
     }
   }
 }

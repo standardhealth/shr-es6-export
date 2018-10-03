@@ -41,6 +41,21 @@ class TestContext {
     }
     return json;
   }
+  
+  getFHIR(name) {
+    const fhir = require(`./fixtures/fhir/${name}.json`);
+    if (!fhir) {
+      throw new Error(`No FHIR JSON found for ${name}`);
+    }
+    delete fhir.id;
+    delete fhir.meta;
+    return fhir;
+  }
+
+  compareFHIR(name, testFHIR) {
+    const fixtureFHIR = this.getFHIR(name);
+    return JSON.stringify(fixtureFHIR) === JSON.stringify(testFHIR);
+  }
 
   setupAjvJson(schemaPath='./build/test/schema') {
     const ajv = new Ajv();

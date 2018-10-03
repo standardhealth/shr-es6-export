@@ -1,0 +1,17 @@
+{
+  "resourceType": "Observation",
+  "id": "1-1",
+  "meta": {
+    "profile": [
+      "http://es6-export.com/fhir/StructureDefinition/shr-slicing-BarAEntry"
+    ]
+  },
+  "related": [
+    {
+      "target": "4"
+    },
+    {
+      "target": "5"
+    }
+  ]
+}

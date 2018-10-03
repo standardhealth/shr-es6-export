@@ -16,9 +16,10 @@ describe('#ToFHIR', () => {
     it('should serialize to a validated PatientDirectMapEntry instance', () => {
       const json = context.getJSON('PatientDirectMapEntry', false);
       const entry = PatientDirectMapEntry.fromJSON(json);
-      const fhir = entry.toFHIR();
-      expect(fhir).is.a('object');
-      context.validateFHIR('PatientDirectMapEntry', fhir);
+      const gen_fhir = entry.toFHIR();
+      expect(gen_fhir).is.a('object');
+      const fhir = context.getFHIR('PatientDirectMapEntry');
+      expect(gen_fhir).to.eql(fhir);
     });
   });
   
@@ -27,9 +28,10 @@ describe('#ToFHIR', () => {
     it('should serialize to a validated PatientEntry instance', () => {
       const json = context.getJSON('PatientEntry', false);
       const entry = PatientEntry.fromJSON(json);
-      const fhir = entry.toFHIR();
-      expect(fhir).is.a('object');
-      context.validateFHIR('PatientEntry', fhir);
+      const gen_fhir = entry.toFHIR();
+      expect(gen_fhir).is.a('object');
+      const fhir = context.getFHIR('PatientEntry');
+      expect(gen_fhir).to.eql(fhir);
     });
   });
 
@@ -38,9 +40,10 @@ describe('#ToFHIR', () => {
     it('should serialize to a validated PractitionerEntry instance', () => {
       const json = context.getJSON('PractitionerEntry', false);
       const entry = PractitionerEntry.fromJSON(json);
-      const fhir = entry.toFHIR();
-      expect(fhir).is.a('object');
-      context.validateFHIR('PractitionerEntry', fhir);
+      const gen_fhir = entry.toFHIR();
+      expect(gen_fhir).is.a('object');
+      const fhir = context.getFHIR('PractitionerEntry');
+      expect(gen_fhir).to.eql(fhir);
     });
   });
 
@@ -49,9 +52,10 @@ describe('#ToFHIR', () => {
     it('should serialize to a validated BloodPressureEntry instance', () => {
       const json = context.getJSON('BloodPressureEntry', false);
       const entry = BloodPressureEntry.fromJSON(json);
-      const fhir = entry.toFHIR();
-      expect(fhir).is.a('object');
-      context.validateFHIR('BloodPressureEntry', fhir);
+      const gen_fhir = entry.toFHIR();
+      expect(gen_fhir).is.a('object');
+      const fhir = context.getFHIR('BloodPressureEntry');
+      expect(gen_fhir).to.eql(fhir);
     });
   });
 
@@ -60,9 +64,10 @@ describe('#ToFHIR', () => {
     it('should serialize to a validated BarAEntry instance', () => {
       const json = context.getJSON('BarAEntry', false);
       const entry = BarAEntry.fromJSON(json);
-      const fhir = entry.toFHIR();
-      expect(fhir).is.a('object');
-      context.validateFHIR('BarAEntry', fhir);
+      const gen_fhir = entry.toFHIR();
+      expect(gen_fhir).is.a('object');
+      const fhir = context.getFHIR('BarAEntry');
+      expect(gen_fhir).to.eql(fhir);
     });
   });
 

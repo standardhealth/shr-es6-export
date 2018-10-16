@@ -17,6 +17,9 @@ describe('#FromFHIR', () => {
       const json = context.getFHIR('PatientDirectMapEntry');
       const entry = PatientDirectMapEntry.fromFHIR(json);
       expect(entry).instanceOf(PatientDirectMapEntry);
+
+      const roundTrip = entry.toFHIR();
+      expect(roundTrip).to.eql(json);
     });
   });
 
@@ -26,6 +29,9 @@ describe('#FromFHIR', () => {
       const json = context.getFHIR('PatientEntry');
       const entry = PatientEntry.fromFHIR(json);
       expect(entry).instanceOf(PatientEntry);
+
+      const roundTrip = entry.toFHIR();
+      expect(roundTrip).to.eql(json);
     });
   });
 
@@ -35,6 +41,9 @@ describe('#FromFHIR', () => {
       const json = context.getFHIR('PractitionerEntry');
       const entry = PractitionerEntry.fromFHIR(json);
       expect(entry).instanceOf(PractitionerEntry);
+
+      const roundTrip = entry.toFHIR();
+      expect(roundTrip).to.eql(json);
     });
   });
 

@@ -8,10 +8,10 @@
   },
   "component": [
     {
-      "code": "Systolic"
+      "code": { "coding": { "code": "8480-6" } }
     },
     {
-      "code": "Diastolic"
+      "code": { "coding": { "code": "8462-4" } }
     }
   ]
 }

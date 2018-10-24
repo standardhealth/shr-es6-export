@@ -47,21 +47,27 @@ describe('#FromFHIR', () => {
     });
   });
 
-  // describe('#BloodPressureEntry()', () => {
-  //   const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
-  //   it('should deserialize a FHIR JSON instance', () => {
-  //     const json = context.getFHIR('BloodPressureEntry');
-  //     const entry = BloodPressureEntry.fromFHIR(json);
-  //     expect(entry).instanceOf(BloodPressureEntry);
-  //   });
-  // });
+  describe('#BloodPressureEntry()', () => {
+    const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('BloodPressureEntry');
+      const entry = BloodPressureEntry.fromFHIR(json);
+      expect(entry).instanceOf(BloodPressureEntry);
 
-  // describe('#BarAEntry()', () => {
-  //   const BarAEntry = importResult('shr/slicing/BarAEntry');
-  //   it('should deserialize a FHIR JSON instance', () => {
-  //     const json = context.getFHIR('BarAEntry');
-  //     const entry = BarAEntry.fromFHIR(json);
-  //     expect(entry).instanceOf(BarAEntry);
-  //   });
-  // });
+      const roundTrip = entry.toFHIR();
+      expect(roundTrip).to.eql(json);
+    });
+  });
+
+  describe('#BarAEntry()', () => {
+    const BarAEntry = importResult('shr/slicing/BarAEntry');
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('BarAEntry');
+      const entry = BarAEntry.fromFHIR(json);
+      expect(entry).instanceOf(BarAEntry);
+
+      const roundTrip = entry.toFHIR();
+      expect(roundTrip).to.eql(json);
+    });
+  });
 });

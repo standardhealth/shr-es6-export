@@ -30,12 +30,44 @@
     "EntryType": {
       "Value": "http://standardhealthrecord.org/spec/shr/slicing/SystolicPressure"
     },
-    "Value": "Systolic"
+    "Value": {
+      "EntryType": {
+        "Value": "http://standardhealthrecord.org/spec/shr/core/Quantity"
+      },
+      "Value": 120.0,
+      "Units": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Units" },
+        "Value": {
+          "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Coding" },
+          "CodeSystem": {
+            "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CodeSystem"},
+            "Value": "http://unitsofmeasure.org"
+          },
+          "Value": "mm[Hg]"
+        }
+      }
+    }
   },
   "DiastolicPressure": {
     "EntryType": {
       "Value": "http://standardhealthrecord.org/spec/shr/slicing/DiastolicPressure"
     },
-    "Value": "Diastolic"
+    "Value": {
+      "EntryType": {
+        "Value": "http://standardhealthrecord.org/spec/shr/core/Quantity"
+      },
+      "Value": 80.0,
+      "Units": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Units" },
+        "Value": {
+          "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Coding" },
+          "CodeSystem": {
+            "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CodeSystem"},
+            "Value": "http://unitsofmeasure.org"
+          },
+          "Value": "mm[Hg]"
+        }
+      }
+    }
   }
 }

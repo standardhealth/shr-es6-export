@@ -15,7 +15,7 @@ describe('#FromFHIR', () => {
     const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PatientDirectMapEntry');
-      const entry = PatientDirectMapEntry.fromFHIR(json);
+      const entry = PatientDirectMapEntry.fromFHIR(json).result;
       expect(entry).instanceOf(PatientDirectMapEntry);
 
       const roundTrip = entry.toFHIR();
@@ -27,7 +27,7 @@ describe('#FromFHIR', () => {
     const PatientEntry = importResult('shr/fhir/PatientEntry');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PatientEntry');
-      const entry = PatientEntry.fromFHIR(json);
+      const entry = PatientEntry.fromFHIR(json).result;
       expect(entry).instanceOf(PatientEntry);
 
       const roundTrip = entry.toFHIR();
@@ -39,7 +39,7 @@ describe('#FromFHIR', () => {
     const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PractitionerEntry');
-      const entry = PractitionerEntry.fromFHIR(json);
+      const entry = PractitionerEntry.fromFHIR(json).result;
       expect(entry).instanceOf(PractitionerEntry);
 
       const roundTrip = entry.toFHIR();
@@ -51,7 +51,7 @@ describe('#FromFHIR', () => {
     const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('BloodPressureEntry');
-      const entry = BloodPressureEntry.fromFHIR(json);
+      const entry = BloodPressureEntry.fromFHIR(json).result;
       expect(entry).instanceOf(BloodPressureEntry);
 
       const roundTrip = entry.toFHIR();
@@ -63,7 +63,7 @@ describe('#FromFHIR', () => {
     const BarAEntry = importResult('shr/slicing/BarAEntry');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('BarAEntry');
-      const entry = BarAEntry.fromFHIR(json);
+      const entry = BarAEntry.fromFHIR(json).result;
       expect(entry).instanceOf(BarAEntry);
 
       const roundTrip = entry.toFHIR();

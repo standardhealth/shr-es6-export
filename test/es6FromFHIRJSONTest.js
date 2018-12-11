@@ -42,7 +42,7 @@ describe('#FromFHIR', () => {
       expect(entry).instanceOf(PatientEntry);
 
       const expected = new PatientEntry()
-        .withValue(new Date(2017, 11, 5))
+        .withValue('2017-12-05')
         .withIntegerValueElement(new IntegerValueElement().withValue(19))
         .withDecimalValueElement(new DecimalValueElement().withValue(12.1))
         .withComplexExtension(new ComplexExtension()

@@ -30,9 +30,9 @@
     }
   ],
   "active": true,
-  "name": {
+  "name": [{
     "text": "MyString"
-  },
+  }],
   "birthDate": "2017-12-05",
   "deceasedBoolean": true,
   "photo": [

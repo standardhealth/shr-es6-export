@@ -86,8 +86,8 @@ describe('#FromFHIR', () => {
     });
   });
 
-  describe('#BloodPressureEntry()', () => {
-    const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
+  describe('#BloodPressureSliceByNumber()', () => {
+    const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
     const SystolicPressure = importResult('shr/slicing/SystolicPressure');
     const DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
     const ComponentCode = importResult('shr/slicing/ComponentCode');
@@ -97,11 +97,11 @@ describe('#FromFHIR', () => {
     const Coding = importResult('shr/core/Coding');
     const CodeSystem = importResult('shr/core/CodeSystem');
     it('should deserialize a FHIR JSON instance', () => {
-      const json = context.getFHIR('BloodPressureEntry');
-      const entry = BloodPressureEntry.fromFHIR(json);
-      expect(entry).instanceOf(BloodPressureEntry);
+      const json = context.getFHIR('BloodPressureSliceByNumber');
+      const entry = BloodPressureSliceByNumber.fromFHIR(json);
+      expect(entry).instanceOf(BloodPressureSliceByNumber);
 
-      const expected = new BloodPressureEntry()
+      const expected = new BloodPressureSliceByNumber()
         .withSystolicPressure(
           new SystolicPressure()
             .withValue(
@@ -148,7 +148,7 @@ describe('#FromFHIR', () => {
               )
             )
         );
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureEntry', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByNumber', entry);
 
       expect(entry).to.eql(expected);
     });

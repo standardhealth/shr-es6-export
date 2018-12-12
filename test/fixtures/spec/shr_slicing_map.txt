@@ -9,6 +9,8 @@ Baz.Foo maps to related.target (slice at = related; slice on = reference.resolve
 
 BloodPressureEntry maps to http://hl7.org/fhir/StructureDefinition/bp:
 SystolicPressure maps to component (slice # = 1)
+SystolicPressure.ComponentCode maps to component.code
 SystolicPressure.Value maps to component.valueQuantity
 DiastolicPressure maps to component (slice # = 2)
+DiastolicPressure.ComponentCode maps to component.code
 DiastolicPressure.Value maps to component.valueQuantity

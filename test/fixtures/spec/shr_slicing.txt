@@ -6,16 +6,22 @@ EntryElement: BloodPressureEntry
 0..1 SystolicPressure
 0..1 DiastolicPressure
 
-Element:		SystolicPressure
+Element:	SystolicPressure
 Based on: EvaluationComponent
-Concept:		LNC#8480-6
+Concept:	LNC#8480-6
+ComponentCode is LNC#8480-6
 
-Element:		DiastolicPressure
+Element:	DiastolicPressure
 Based on: EvaluationComponent
-Concept:		LNC#8462-4
+Concept:	LNC#8462-4
+ComponentCode is LNC#8462-4
 
-Element: EvaluationComponent
-Value: Quantity
+Element:  EvaluationComponent
+Value:    Quantity
+1..1      ComponentCode
+
+Element:  ComponentCode
+Value:    CodeableConcept
 
 EntryElement: 		Observation
 0..1			PersonOfRecord

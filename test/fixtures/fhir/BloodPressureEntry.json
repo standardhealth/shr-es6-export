@@ -8,7 +8,7 @@
   },
   "component": [
     {
-      "code": { "coding": [{ "code": "8480-6" }] },
+      "code": { "coding": [{ "system": "http://loinc.org", "code": "8480-6" }] },
       "valueQuantity": {
         "value": 120.0,
         "system": "http://unitsofmeasure.org",
@@ -16,7 +16,7 @@
       }
     },
     {
-      "code": { "coding": [{ "code": "8462-4" }] },
+      "code": { "coding": [{ "system": "http://loinc.org", "code": "8462-4" }] },
       "valueQuantity": {
         "value": 80.0,
         "system": "http://unitsofmeasure.org",

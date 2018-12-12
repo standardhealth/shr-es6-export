@@ -154,6 +154,74 @@ describe('#FromFHIR', () => {
     });
   });
 
+  describe('#BloodPressureSliceByValue()', () => {
+    const BloodPressureSliceByValue = importResult('shr/slicing/BloodPressureSliceByValue');
+    const SystolicPressure = importResult('shr/slicing/SystolicPressure');
+    const DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
+    const ComponentCode = importResult('shr/slicing/ComponentCode');
+    const Quantity = importResult('shr/core/Quantity');
+    const Units = importResult('shr/core/Units');
+    const CodeableConcept = importResult('shr/core/CodeableConcept');
+    const Coding = importResult('shr/core/Coding');
+    const CodeSystem = importResult('shr/core/CodeSystem');
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('BloodPressureSliceByValue');
+      const entry = BloodPressureSliceByValue.fromFHIR(json);
+      expect(entry).instanceOf(BloodPressureSliceByValue);
+
+      const expected = new BloodPressureSliceByValue()
+        .withSystolicPressure(
+          new SystolicPressure()
+            .withValue(
+              new Quantity()
+                .withValue(120.0)
+                .withUnits(
+                  new Units().withCoding(
+                    new Coding()
+                      .withCodeSystem(new CodeSystem().withValue('http://unitsofmeasure.org'))
+                      .withCode('mm[Hg]')
+                  )
+                )
+            )
+            .withComponentCode(new ComponentCode()
+              .withValue(new CodeableConcept()
+                .withCoding([
+                  new Coding()
+                    .withCodeSystem(new CodeSystem().withValue('http://loinc.org'))
+                    .withCode('8480-6')
+                ])
+              )
+            )
+        )
+        .withDiastolicPressure(
+          new DiastolicPressure()
+            .withValue(
+              new Quantity()
+                .withValue(80.0)
+                .withUnits(
+                  new Units().withCoding(
+                    new Coding()
+                      .withCodeSystem(new CodeSystem().withValue('http://unitsofmeasure.org'))
+                      .withCode('mm[Hg]')
+                  )
+                )
+            )
+            .withComponentCode(new ComponentCode()
+              .withValue(new CodeableConcept()
+                .withCoding([
+                  new Coding()
+                    .withCodeSystem(new CodeSystem().withValue('http://loinc.org'))
+                    .withCode('8462-4')
+                ])
+              )
+            )
+        );
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByValue', entry);
+
+      expect(entry).to.eql(expected);
+    });
+  });
+
   describe('#BarAEntry()', () => {
     const BarAEntry = importResult('shr/slicing/BarAEntry');
     const Baz = importResult('shr/slicing/Baz');

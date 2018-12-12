@@ -2,7 +2,13 @@ Grammar:    DataElement 5.0
 Namespace:  shr.slicing
 Uses: shr.simple, shr.core
 
+CodeSystem:     LNC = http://loinc.org
+
 EntryElement: BloodPressureSliceByNumber
+0..1 SystolicPressure
+0..1 DiastolicPressure
+
+EntryElement: BloodPressureSliceByValue
 0..1 SystolicPressure
 0..1 DiastolicPressure
 

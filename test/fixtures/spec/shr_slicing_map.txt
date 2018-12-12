@@ -7,8 +7,18 @@ Observation maps to http://hl7.org/fhir/us/core/StructureDefinition/us-core-obse
 BarAEntry:
 Baz.Foo maps to related.target (slice at = related; slice on = reference.resolve(); slice strategy = includes; slice on type = profile)
 
-BloodPressureEntry maps to http://hl7.org/fhir/StructureDefinition/bp:
+BloodPressureSliceByNumber maps to http://hl7.org/fhir/StructureDefinition/bp:
 SystolicPressure maps to component (slice # = 1)
+SystolicPressure.ComponentCode maps to component.code
 SystolicPressure.Value maps to component.valueQuantity
 DiastolicPressure maps to component (slice # = 2)
+DiastolicPressure.ComponentCode maps to component.code
 DiastolicPressure.Value maps to component.valueQuantity
+
+BloodPressureSliceByValue maps to Observation:
+SystolicPressure maps to component (slice on = code.coding.code)
+SystolicPressure.ComponentCode maps to component.code
+SystolicPressure.Value maps to component.value[x]
+DiastolicPressure maps to component
+DiastolicPressure.ComponentCode maps to component.code
+DiastolicPressure.Value maps to component.value[x]

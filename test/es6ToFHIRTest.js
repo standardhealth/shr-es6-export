@@ -22,7 +22,7 @@ describe('#ToFHIR', () => {
       expect(gen_fhir).to.eql(fhir);
     });
   });
-  
+
   describe('#PatientEntry()', () => {
     const PatientEntry = importResult('shr/fhir/PatientEntry');
     it('should serialize to a validated PatientEntry instance', () => {
@@ -47,14 +47,14 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#BloodPressureEntry()', () => {
-    const BloodPressureEntry = importResult('shr/slicing/BloodPressureEntry');
-    it('should serialize to a validated BloodPressureEntry instance', () => {
-      const json = context.getJSON('BloodPressureEntry', false);
-      const entry = BloodPressureEntry.fromJSON(json);
+  describe('#BloodPressureSliceByNumber()', () => {
+    const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
+    it('should serialize to a validated BloodPressureSliceByNumber instance', () => {
+      const json = context.getJSON('BloodPressureSliceByNumber', false);
+      const entry = BloodPressureSliceByNumber.fromJSON(json);
       const gen_fhir = entry.toFHIR();
       expect(gen_fhir).is.a('object');
-      const fhir = context.getFHIR('BloodPressureEntry');
+      const fhir = context.getFHIR('BloodPressureSliceByNumber');
       expect(gen_fhir).to.eql(fhir);
     });
   });

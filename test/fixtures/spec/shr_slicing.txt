@@ -2,20 +2,32 @@ Grammar:    DataElement 5.0
 Namespace:  shr.slicing
 Uses: shr.simple, shr.core
 
-EntryElement: BloodPressureEntry
+CodeSystem:     LNC = http://loinc.org
+
+EntryElement: BloodPressureSliceByNumber
 0..1 SystolicPressure
 0..1 DiastolicPressure
 
-Element:		SystolicPressure
-Based on: EvaluationComponent
-Concept:		LNC#8480-6
+EntryElement: BloodPressureSliceByValue
+0..1 SystolicPressure
+0..1 DiastolicPressure
 
-Element:		DiastolicPressure
+Element:	SystolicPressure
 Based on: EvaluationComponent
-Concept:		LNC#8462-4
+Concept:	LNC#8480-6
+ComponentCode is LNC#8480-6
 
-Element: EvaluationComponent
-Value: Quantity
+Element:	DiastolicPressure
+Based on: EvaluationComponent
+Concept:	LNC#8462-4
+ComponentCode is LNC#8462-4
+
+Element:  EvaluationComponent
+Value:    Quantity
+1..1      ComponentCode
+
+Element:  ComponentCode
+Value:    CodeableConcept
 
 EntryElement: 		Observation
 0..1			PersonOfRecord

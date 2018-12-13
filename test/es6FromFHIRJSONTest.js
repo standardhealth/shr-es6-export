@@ -222,37 +222,37 @@ describe('#FromFHIR', () => {
     });
   });
 
-  describe('#BarAEntry()', () => {
-    const BarAEntry = importResult('shr/slicing/BarAEntry');
-    const Baz = importResult('shr/slicing/Baz');
+  describe('#PanelSliceByProfile()', () => {
+    const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
+    const PanelMembers = importResult('shr/slicing/PanelMembers');
     const Reference = importResult('Reference');
     const ShrId = importResult('shr/base/ShrId');
     const EntryId = importResult('shr/base/EntryId');
     const EntryType = importResult('shr/base/EntryType');
     it('should deserialize a FHIR JSON instance', () => {
-      const json = context.getFHIR('BarAEntry');
-      const entry = BarAEntry.fromFHIR(json);
-      expect(entry).instanceOf(BarAEntry);
+      const json = context.getFHIR('PanelSliceByProfile');
+      const entry = PanelSliceByProfile.fromFHIR(json);
+      expect(entry).instanceOf(PanelSliceByProfile);
 
-      const expected = new BarAEntry()
-        .withBaz(new Baz()
-          .withFoo([
+      const expected = new PanelSliceByProfile()
+        .withPanelMembers(new PanelMembers()
+          .withObservation([
             new Reference(
               new ShrId().withValue('1-1'),
               new EntryId().withValue('4'),
-              new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/FooA')
+              new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberA')
             ),
             new Reference(
               new ShrId().withValue('1-1'),
               new EntryId().withValue('5'),
-              new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/FooB')
+              new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberB')
             )
           ])
         );
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BarAEntry', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/PanelSliceByProfile', entry);
       // fix the expected references to use the same shrId and the overall expected shrID
-      expected.baz.foo[0].shrId = expected.entryInfo.shrId;
-      expected.baz.foo[1].shrId = expected.entryInfo.shrId;
+      expected.panelMembers.observation[0].shrId = expected.entryInfo.shrId;
+      expected.panelMembers.observation[1].shrId = expected.entryInfo.shrId;
 
       expect(entry).to.eql(expected);
     });

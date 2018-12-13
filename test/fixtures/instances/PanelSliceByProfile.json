@@ -24,25 +24,25 @@
     "Value": "2018-08-06T12:34:56Z"
   },
   "EntryType": {
-    "Value": "http://standardhealthrecord.org/spec/shr/fhir/BarAEntry"
+    "Value": "http://standardhealthrecord.org/spec/shr/fhir/PanelSliceByProfile"
   },
-  "Baz": {
+  "PanelMembers": {
     "EntryType": {
-      "Value": "http://standardhealthrecord.org/spec/shr/slicing/Baz"
+      "Value": "http://standardhealthrecord.org/spec/shr/slicing/PanelMembers"
     },
-    "Foo": [
+    "Observation": [
       {
         "_ShrId": "4-1",
         "_EntryId": "4",
         "_EntryType": {
-          "Value": "http://standardhealthrecord.org/spec/shr/slicing/FooA"
+          "Value": "http://standardhealthrecord.org/spec/shr/slicing/MemberA"
         }
       },
       {
         "_ShrId": "5-1",
         "_EntryId": "5",
         "_EntryType": {
-          "Value": "http://standardhealthrecord.org/spec/shr/slicing/FooB"
+          "Value": "http://standardhealthrecord.org/spec/shr/slicing/MemberB"
         }
       }
     ]

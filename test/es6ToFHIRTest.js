@@ -23,7 +23,7 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PatientEntry()', () => {
+  describe.skip('#PatientEntry()', () => {
     const PatientEntry = importResult('shr/fhir/PatientEntry');
     it('should serialize to a validated PatientEntry instance', () => {
       const json = context.getJSON('PatientEntry', false);
@@ -35,7 +35,7 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PractitionerEntry()', () => {
+  describe.skip('#PractitionerEntry()', () => {
     const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
     it('should serialize to a validated PractitionerEntry instance', () => {
       const json = context.getJSON('PractitionerEntry', false);
@@ -47,7 +47,7 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#BloodPressureSliceByNumber()', () => {
+  describe.skip('#BloodPressureSliceByNumber()', () => {
     const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
     it('should serialize to a validated BloodPressureSliceByNumber instance', () => {
       const json = context.getJSON('BloodPressureSliceByNumber', false);

@@ -5,8 +5,9 @@ Target:    FHIR_STU_3
 PatientEntry maps to Patient:
 	Value maps to birthDate
 	BooleanValue maps to active
+	constrain name to 1..1
 	StringValue maps to name.text
-	Deceased maps to deceased[x].boolean
+	Deceased maps to deceased[x]
 	PhotoNote maps to photo
 
 PhotoNote maps to Attachment:
@@ -16,5 +17,6 @@ PatientDirectMapEntry maps to Patient:
 	BooleanValue maps to active
 
 PractitionerEntry maps to Practitioner:
+	constrain name to 1..1
 	NestedStringValue maps to name.text
     DoubleNestedBooleanValue.NestedBooleanValue.BooleanValue maps to active

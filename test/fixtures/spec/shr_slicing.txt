@@ -31,27 +31,6 @@ Value:    CodeableConcept
 
 EntryElement: 		Observation
 0..1			ref(PatientEntry)
-0..1			SubjectIfNotPersonOfRecord
-0..1			AnyPersonOrOrganization
-0..1			Recorded
-0..1			Signed  // Author
-1..1			ObservationTopic
-1..1			ObservationContext
-
-// EntryElement: PanelSliceByProfile
-// Based on: Observation
-// 0..*      ref(Related)
-//   includes 0..1 ref(RelatedA)
-//   includes 0..1 ref(RelatedB)
-
-// EntryElement:  Related
-// Based on: Observation
-
-// EntryElement:  RelatedA
-// Based on: Related
-
-// EntryElement:  RelatedB
-// Based on: Related
 
 Element: MemberA
 Based on: Observation

@@ -5,12 +5,15 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
-const context = new TestContext();
-context.setupAjvJson('./build/test/schema');
-context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
-
 describe('#FromFHIR', () => {
+
+  const context = new TestContext();
+  before(() => {
+    setup('./test/fixtures/spec', './build/test', true);
+    context.setupAjvJson('./build/test/schema');
+    context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
+  });
+
   describe('#PatientDirectMapEntry()', () => {
     const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
     const BooleanValue = importResult('shr/simple/BooleanValue');

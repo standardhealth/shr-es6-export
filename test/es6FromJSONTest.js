@@ -5,11 +5,13 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
-const context = new TestContext();
-context.setupAjvJson('./build/test/schema');
-
 describe('#FromJSON', () => {
+
+  const context = new TestContext();
+  before(() => {
+    setup('./test/fixtures/spec', './build/test', true);
+    context.setupAjvJson('./build/test/schema');
+  });
 
   describe('#StringValueEntryClass()', () => {
     const StringValueEntry = importResult('shr/simple/StringValueEntry');

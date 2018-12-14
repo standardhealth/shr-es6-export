@@ -5,9 +5,10 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
-
 describe('#Class', () => {
+
+  before(() => setup('./test/fixtures/spec', './build/test', true));
+
   describe('#StringValueClass()', () => {
     const StringValueEntry = importResult('shr/simple/StringValueEntry');
     it('should construct to empty instance', () => {

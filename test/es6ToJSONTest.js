@@ -5,12 +5,15 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
 const context = new TestContext();
-context.setupAjvJson('./build/test/schema');
 
 describe('#ToJSON', () => {
-  
+
+  before(() => {
+    setup('./test/fixtures/spec', './build/test', true);
+    context.setupAjvJson('./build/test/schema');
+  });
+
   describe('#StringValueEntryClass()', () => {
     const StringValueEntry = importResult('shr/simple/StringValueEntry');
     it('should serialize a JSON instance', () => {
@@ -29,7 +32,7 @@ describe('#ToJSON', () => {
       const json = context.getJSON('CodeObjectValueEntry');
       const entry = CodeValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeValueEntry);
-      
+
       let gen_json = entry.toJSON();
       context.validateJSON('CodeObjectValueEntry', gen_json);
       expect(gen_json['EntryType']).to.eql({Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeValueEntry'});
@@ -48,8 +51,8 @@ describe('#ToJSON', () => {
       const json = context.getJSON('CodingObjectValueEntry');
       const entry = CodingValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodingValueEntry);
-      
-      
+
+
       let gen_json = entry.toJSON();
       context.validateJSON('CodingObjectValueEntry', gen_json);
       expect(gen_json['EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodingValueEntry' });
@@ -68,7 +71,7 @@ describe('#ToJSON', () => {
       const json = context.getJSON('CodeableConceptObjectValueEntry');
       const entry = CodeableConceptValueEntry.fromJSON(json);
       expect(entry).instanceOf(CodeableConceptValueEntry);
-      
+
       let gen_json = entry.toJSON();
       context.validateJSON('CodeableConceptObjectValueEntry', gen_json);
       expect(gen_json['EntryType']).to.eql({ Value: 'http://standardhealthrecord.org/spec/shr/simple/CodeableConceptValueEntry' });
@@ -117,7 +120,7 @@ describe('#ToJSON', () => {
       let gen_json = entry.toJSON();
       context.validateJSON('RecursiveEntry', gen_json);
       expect(gen_json).to.eql(json);
-      
+
       // Recursive child 1
       const child1 = entry.recursiveEntry[0];
       expect(child1).instanceOf(RecursiveEntry);
@@ -338,10 +341,10 @@ describe('#ToJSON', () => {
 });
 
 /**
- * 
+ *
  * @param {string} jsonName
  * @param {string} validationName
- * @param {Object} clazz 
+ * @param {Object} clazz
  */
 function testJSONRoundtrip(jsonName, validationName, clazz) {
   const json = context.getJSON(jsonName);

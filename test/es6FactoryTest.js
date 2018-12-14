@@ -5,9 +5,9 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
-
 describe('#Factory()', () => {
+
+  before(() => setup('./test/fixtures/spec', './build/test', true));
 
   describe('#ObjectFactory()', () => {
     const ObjectFactory = importResult('ObjectFactory');

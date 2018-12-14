@@ -38,24 +38,36 @@ EntryElement: 		Observation
 1..1			ObservationTopic
 1..1			ObservationContext
 
-Element: Foo
+// EntryElement: PanelSliceByProfile
+// Based on: Observation
+// 0..*      ref(Related)
+//   includes 0..1 ref(RelatedA)
+//   includes 0..1 ref(RelatedB)
+
+// EntryElement:  Related
+// Based on: Observation
+
+// EntryElement:  RelatedA
+// Based on: Related
+
+// EntryElement:  RelatedB
+// Based on: Related
+
+Element: MemberA
 Based on: Observation
 
-Element: FooA
-Based on: Foo
-
-Element: FooB
-Based on: Foo
-
-Element: Bar
+Element: MemberB
 Based on: Observation
-0..1 Baz
 
-EntryElement: BarAEntry
-Based on: Bar
-Baz.Foo
-  includes 0..1 ref(FooA)
-  includes 0..1 ref(FooB)
+Element: Panel
+Based on: Observation
+0..1 PanelMembers
 
-Element: Baz
-0..* ref(Foo)
+EntryElement: PanelSliceByProfile
+Based on: Panel
+PanelMembers.Observation
+  includes 0..1 ref(MemberA)
+  includes 0..1 ref(MemberB)
+
+Element: PanelMembers
+0..* ref(Observation)

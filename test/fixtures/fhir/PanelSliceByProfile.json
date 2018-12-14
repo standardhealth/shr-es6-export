@@ -3,7 +3,7 @@
   "id": "1-1",
   "meta": {
     "profile": [
-      "http://es6-export.com/fhir/StructureDefinition/shr-slicing-BarAEntry"
+      "http://es6-export.com/fhir/StructureDefinition/shr-slicing-PanelSliceByProfile"
     ]
   },
   "related": [

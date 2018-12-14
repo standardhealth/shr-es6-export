@@ -59,14 +59,14 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#BarAEntry()', () => {
-    const BarAEntry = importResult('shr/slicing/BarAEntry');
-    it('should serialize to a validated BarAEntry instance', () => {
-      const json = context.getJSON('BarAEntry', false);
-      const entry = BarAEntry.fromJSON(json);
+  describe('#PanelSliceByProfile()', () => {
+    const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
+    it('should serialize to a validated PanelSliceByProfile instance', () => {
+      const json = context.getJSON('PanelSliceByProfile', false);
+      const entry = PanelSliceByProfile.fromJSON(json);
       const gen_fhir = entry.toFHIR();
       expect(gen_fhir).is.a('object');
-      const fhir = context.getFHIR('BarAEntry');
+      const fhir = context.getFHIR('PanelSliceByProfile');
       expect(gen_fhir).to.eql(fhir);
     });
   });

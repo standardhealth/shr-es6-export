@@ -13,7 +13,7 @@ describe('#ToFHIR', () => {
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
   });
 
-  describe('#PatientDirectMapEntry()', () => {
+  describe.skip('#PatientDirectMapEntry()', () => {
     const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
     it('should serialize to a validated PatientDirectMapEntry instance', () => {
       const json = context.getJSON('PatientDirectMapEntry', false);
@@ -61,7 +61,7 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PanelSliceByProfile()', () => {
+  describe.skip('#PanelSliceByProfile()', () => {
     const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
     it('should serialize to a validated PanelSliceByProfile instance', () => {
       const json = context.getJSON('PanelSliceByProfile', false);

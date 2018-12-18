@@ -228,34 +228,53 @@ describe('#FromFHIR', () => {
   describe('#PanelSliceByProfile()', () => {
     const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
     const PanelMembers = importResult('shr/slicing/PanelMembers');
+    const MemberA = importResult('shr/slicing/MemberA');
+    const MemberB = importResult('shr/slicing/MemberB');
     const Reference = importResult('Reference');
+    const Entry = importResult('shr/base/Entry');
     const ShrId = importResult('shr/base/ShrId');
     const EntryId = importResult('shr/base/EntryId');
     const EntryType = importResult('shr/base/EntryType');
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PanelSliceByProfile');
-      const entry = PanelSliceByProfile.fromFHIR(json);
+      const memberA = context.getFHIR('MemberA');
+      const memberB = context.getFHIR('MemberB');
+      // TODO: Need to make allEntries conform correctly to intended format (entries w/ fullURL and resource)
+      const allEntries = [json, memberA, memberB].map(j => {
+        return { fullUrl: `http://example.org/fhir/Observation/${j.id}`, resource:  j };
+      });
+      const entry = PanelSliceByProfile.fromFHIR(json, '12345', allEntries);
       expect(entry).instanceOf(PanelSliceByProfile);
 
       const expected = new PanelSliceByProfile()
         .withPanelMembers(new PanelMembers()
           .withObservation([
             new Reference(
-              new ShrId().withValue('1-1'),
+              new ShrId().withValue('12345'),
               new EntryId().withValue('4'),
               new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberA')
             ),
             new Reference(
-              new ShrId().withValue('1-1'),
+              new ShrId().withValue('12345'),
               new EntryId().withValue('5'),
               new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberB')
             )
           ])
         );
+      expected.panelMembers.observation[0].reference = new MemberA()
+        .withEntryInfo(new Entry()
+          .withShrId(new ShrId().withValue('12345'))
+          .withEntryId(new EntryId().withValue('4'))
+          .withEntryType(new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberA'))
+        );
+      expected.panelMembers.observation[1].reference = new MemberB()
+        .withEntryInfo(new Entry()
+          .withShrId(new ShrId().withValue('12345'))
+          .withEntryId(new EntryId().withValue('5'))
+          .withEntryType(new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberB'))
+        );
+
       fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/PanelSliceByProfile', entry);
-      // fix the expected references to use the same shrId and the overall expected shrID
-      expected.panelMembers.observation[0].shrId = expected.entryInfo.shrId;
-      expected.panelMembers.observation[1].shrId = expected.entryInfo.shrId;
 
       expect(entry).to.eql(expected);
     });

@@ -8,10 +8,10 @@
   },
   "related": [
     {
-      "target": "4"
+      "target": { "reference": "http://example.org/fhir/Observation/4" }
     },
     {
-      "target": "5"
+      "target": { "reference": "http://example.org/fhir/Observation/5" }
     }
   ]
 }

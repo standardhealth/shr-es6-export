@@ -32,10 +32,10 @@ Value:    CodeableConcept
 EntryElement: 		Observation
 0..1			ref(PatientEntry)
 
-Element: MemberA
+EntryElement: MemberA
 Based on: Observation
 
-Element: MemberB
+EntryElement: MemberB
 Based on: Observation
 
 Element: Panel

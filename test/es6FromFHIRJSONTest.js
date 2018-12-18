@@ -271,10 +271,10 @@ describe('#FromFHIR', () => {
 
       const expected = new Observation()
         .withPatientEntry(new Reference(
-              new ShrId().withValue('1-1'),
-              new EntryId().withValue('abcd-1234'),
-              new EntryType().withValue('http://standardhealthrecord.org/spec/shr/fhir/PatientEntry')
-          )
+          new ShrId().withValue('1-1'),
+          new EntryId().withValue('abcd-1234'),
+          new EntryType().withValue('http://standardhealthrecord.org/spec/shr/fhir/PatientEntry')
+        )
         );
 
       fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/Observation', entry);

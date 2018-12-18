@@ -2,7 +2,8 @@ Grammar:	Map 5.1
 Namespace:	shr.slicing
 Target:		FHIR_STU_3
 
-Observation maps to http://hl7.org/fhir/us/core/StructureDefinition/us-core-observationresults:
+Observation maps to Observation:
+ PatientEntry maps to subject
 
 PanelSliceByProfile:
 PanelMembers.Observation maps to related.target (slice at = related; slice on = reference.resolve(); slice strategy = includes; slice on type = profile)

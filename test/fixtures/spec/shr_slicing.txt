@@ -1,6 +1,6 @@
 Grammar:    DataElement 5.0
 Namespace:  shr.slicing
-Uses: shr.simple, shr.core
+Uses: shr.simple, shr.core, shr.fhir
 
 CodeSystem:     LNC = http://loinc.org
 
@@ -30,7 +30,7 @@ Element:  ComponentCode
 Value:    CodeableConcept
 
 EntryElement: 		Observation
-0..1			PersonOfRecord
+0..1			ref(PatientEntry)
 0..1			SubjectIfNotPersonOfRecord
 0..1			AnyPersonOrOrganization
 0..1			Recorded

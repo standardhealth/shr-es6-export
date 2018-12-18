@@ -14,7 +14,10 @@ describe('#ToFHIR', () => {
   });
 
   describe.skip('#PatientDirectMapEntry()', () => {
-    const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
+
+    let PatientDirectMapEntry;
+    before(() => PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry'));
+
     it('should serialize to a validated PatientDirectMapEntry instance', () => {
       const json = context.getJSON('PatientDirectMapEntry', false);
       const entry = PatientDirectMapEntry.fromJSON(json);
@@ -26,7 +29,10 @@ describe('#ToFHIR', () => {
   });
 
   describe.skip('#PatientEntry()', () => {
-    const PatientEntry = importResult('shr/fhir/PatientEntry');
+
+    let PatientEntry;
+    before(() => PatientEntry = importResult('shr/fhir/PatientEntry'));
+
     it('should serialize to a validated PatientEntry instance', () => {
       const json = context.getJSON('PatientEntry', false);
       const entry = PatientEntry.fromJSON(json);
@@ -38,7 +44,10 @@ describe('#ToFHIR', () => {
   });
 
   describe.skip('#PractitionerEntry()', () => {
-    const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
+
+    let PractitionerEntry;
+    before(() => PractitionerEntry = importResult('shr/fhir/PractitionerEntry'));
+
     it('should serialize to a validated PractitionerEntry instance', () => {
       const json = context.getJSON('PractitionerEntry', false);
       const entry = PractitionerEntry.fromJSON(json);
@@ -50,7 +59,10 @@ describe('#ToFHIR', () => {
   });
 
   describe.skip('#BloodPressureSliceByNumber()', () => {
-    const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
+
+    let BloodPressureSliceByNumber;
+    before(() => BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber'));
+
     it('should serialize to a validated BloodPressureSliceByNumber instance', () => {
       const json = context.getJSON('BloodPressureSliceByNumber', false);
       const entry = BloodPressureSliceByNumber.fromJSON(json);
@@ -62,7 +74,10 @@ describe('#ToFHIR', () => {
   });
 
   describe.skip('#PanelSliceByProfile()', () => {
-    const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
+
+    let PanelSliceByProfile;
+    before(() => PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile'));
+
     it('should serialize to a validated PanelSliceByProfile instance', () => {
       const json = context.getJSON('PanelSliceByProfile', false);
       const entry = PanelSliceByProfile.fromJSON(json);

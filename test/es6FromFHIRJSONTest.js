@@ -15,8 +15,13 @@ describe('#FromFHIR', () => {
   });
 
   describe('#PatientDirectMapEntry()', () => {
-    const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
-    const BooleanValue = importResult('shr/simple/BooleanValue');
+
+    let PatientDirectMapEntry, BooleanValue;
+    before(() => {
+      PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
+      BooleanValue = importResult('shr/simple/BooleanValue');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PatientDirectMapEntry');
       const entry = PatientDirectMapEntry.fromFHIR(json);
@@ -31,14 +36,19 @@ describe('#FromFHIR', () => {
   });
 
   describe('#PatientEntry()', () => {
-    const PatientEntry = importResult('shr/fhir/PatientEntry');
-    const IntegerValueElement = importResult('shr/simple/IntegerValueElement');
-    const DecimalValueElement = importResult('shr/simple/DecimalValueElement');
-    const ComplexExtension = importResult('shr/fhir/ComplexExtension');
-    const StringValue = importResult('shr/simple/StringValue');
-    const BooleanValue = importResult('shr/simple/BooleanValue');
-    const Deceased = importResult('shr/fhir/Deceased');
-    const PhotoNote = importResult('shr/fhir/PhotoNote');
+
+    let PatientEntry, IntegerValueElement, DecimalValueElement, ComplexExtension, StringValue, BooleanValue, Deceased, PhotoNote;
+    before(() => {
+      PatientEntry = importResult('shr/fhir/PatientEntry');
+      IntegerValueElement = importResult('shr/simple/IntegerValueElement');
+      DecimalValueElement = importResult('shr/simple/DecimalValueElement');
+      ComplexExtension = importResult('shr/fhir/ComplexExtension');
+      StringValue = importResult('shr/simple/StringValue');
+      BooleanValue = importResult('shr/simple/BooleanValue');
+      Deceased = importResult('shr/fhir/Deceased');
+      PhotoNote = importResult('shr/fhir/PhotoNote');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PatientEntry');
       const entry = PatientEntry.fromFHIR(json);
@@ -63,12 +73,17 @@ describe('#FromFHIR', () => {
   });
 
   describe('#PractitionerEntry()', () => {
-    const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
-    const DoubleNestedBooleanValue = importResult('shr/simple/DoubleNestedBooleanValue');
-    const NestedBooleanValue = importResult('shr/simple/NestedBooleanValue');
-    const BooleanValue = importResult('shr/simple/BooleanValue');
-    const NestedStringValue = importResult('shr/simple/NestedStringValue');
-    const StringValue = importResult('shr/simple/StringValue');
+
+    let PractitionerEntry, DoubleNestedBooleanValue, NestedBooleanValue, BooleanValue, NestedStringValue, StringValue;
+    before(() => {
+      PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
+      DoubleNestedBooleanValue = importResult('shr/simple/DoubleNestedBooleanValue');
+      NestedBooleanValue = importResult('shr/simple/NestedBooleanValue');
+      BooleanValue = importResult('shr/simple/BooleanValue');
+      NestedStringValue = importResult('shr/simple/NestedStringValue');
+      StringValue = importResult('shr/simple/StringValue');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PractitionerEntry');
       const entry = PractitionerEntry.fromFHIR(json);
@@ -90,15 +105,20 @@ describe('#FromFHIR', () => {
   });
 
   describe('#BloodPressureSliceByNumber()', () => {
-    const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
-    const SystolicPressure = importResult('shr/slicing/SystolicPressure');
-    const DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
-    const ComponentCode = importResult('shr/slicing/ComponentCode');
-    const Quantity = importResult('shr/core/Quantity');
-    const Units = importResult('shr/core/Units');
-    const CodeableConcept = importResult('shr/core/CodeableConcept');
-    const Coding = importResult('shr/core/Coding');
-    const CodeSystem = importResult('shr/core/CodeSystem');
+
+    let BloodPressureSliceByNumber, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
+    before(() => {
+      BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
+      SystolicPressure = importResult('shr/slicing/SystolicPressure');
+      DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
+      ComponentCode = importResult('shr/slicing/ComponentCode');
+      Quantity = importResult('shr/core/Quantity');
+      Units = importResult('shr/core/Units');
+      CodeableConcept = importResult('shr/core/CodeableConcept');
+      Coding = importResult('shr/core/Coding');
+      CodeSystem = importResult('shr/core/CodeSystem');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('BloodPressureSliceByNumber');
       const entry = BloodPressureSliceByNumber.fromFHIR(json);
@@ -158,15 +178,20 @@ describe('#FromFHIR', () => {
   });
 
   describe('#BloodPressureSliceByValue()', () => {
-    const BloodPressureSliceByValue = importResult('shr/slicing/BloodPressureSliceByValue');
-    const SystolicPressure = importResult('shr/slicing/SystolicPressure');
-    const DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
-    const ComponentCode = importResult('shr/slicing/ComponentCode');
-    const Quantity = importResult('shr/core/Quantity');
-    const Units = importResult('shr/core/Units');
-    const CodeableConcept = importResult('shr/core/CodeableConcept');
-    const Coding = importResult('shr/core/Coding');
-    const CodeSystem = importResult('shr/core/CodeSystem');
+
+    let BloodPressureSliceByValue, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
+    before(() => {
+      BloodPressureSliceByValue = importResult('shr/slicing/BloodPressureSliceByValue');
+      SystolicPressure = importResult('shr/slicing/SystolicPressure');
+      DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
+      ComponentCode = importResult('shr/slicing/ComponentCode');
+      Quantity = importResult('shr/core/Quantity');
+      Units = importResult('shr/core/Units');
+      CodeableConcept = importResult('shr/core/CodeableConcept');
+      Coding = importResult('shr/core/Coding');
+      CodeSystem = importResult('shr/core/CodeSystem');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('BloodPressureSliceByValue');
       const entry = BloodPressureSliceByValue.fromFHIR(json);
@@ -226,15 +251,19 @@ describe('#FromFHIR', () => {
   });
 
   describe('#PanelSliceByProfile()', () => {
-    const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
-    const PanelMembers = importResult('shr/slicing/PanelMembers');
-    const MemberA = importResult('shr/slicing/MemberA');
-    const MemberB = importResult('shr/slicing/MemberB');
-    const Reference = importResult('Reference');
-    const Entry = importResult('shr/base/Entry');
-    const ShrId = importResult('shr/base/ShrId');
-    const EntryId = importResult('shr/base/EntryId');
-    const EntryType = importResult('shr/base/EntryType');
+    let PanelSliceByProfile, PanelMembers, MemberA, MemberB, Reference, Entry, ShrId, EntryId, EntryType;
+    before(() => {
+      PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
+      PanelMembers = importResult('shr/slicing/PanelMembers');
+      MemberA = importResult('shr/slicing/MemberA');
+      MemberB = importResult('shr/slicing/MemberB');
+      Reference = importResult('Reference');
+      Entry = importResult('shr/base/Entry');
+      ShrId = importResult('shr/base/ShrId');
+      EntryId = importResult('shr/base/EntryId');
+      EntryType = importResult('shr/base/EntryType');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('PanelSliceByProfile');
       const memberA = context.getFHIR('MemberA');
@@ -281,11 +310,16 @@ describe('#FromFHIR', () => {
   });
 
   describe('#Observation()', () => {
-    const Observation = importResult('shr/slicing/Observation');
-    const Reference = importResult('Reference');
-    const ShrId = importResult('shr/base/ShrId');
-    const EntryId = importResult('shr/base/EntryId');
-    const EntryType = importResult('shr/base/EntryType');
+
+    let Observation, Reference, ShrId, EntryId, EntryType;
+    before(() => {
+      Observation = importResult('shr/slicing/Observation');
+      Reference = importResult('Reference');
+      ShrId = importResult('shr/base/ShrId');
+      EntryId = importResult('shr/base/EntryId');
+      EntryType = importResult('shr/base/EntryType');
+    });
+
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('Observation');
       const entry = Observation.fromFHIR(json, '1-1');

@@ -15,14 +15,20 @@ describe('#ToJSON', () => {
   });
 
   describe('#StringValueEntryClass()', () => {
-    const StringValueEntry = importResult('shr/simple/StringValueEntry');
+
+    let StringValueEntry;
+    before(() => StringValueEntry = importResult('shr/simple/StringValueEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('StringValueEntry', 'StringValueEntry', StringValueEntry);
     });
   });
 
   describe('#CodeValueEntryClass()', () => {
-    const CodeValueEntry = importResult('shr/simple/CodeValueEntry');
+
+    let CodeValueEntry;
+    before(() => CodeValueEntry = importResult('shr/simple/CodeValueEntry'));
+
     it('should serialize a JSON instance with a string code', () => {
       testJSONRoundtrip('CodeStringValueEntry', 'CodeStringValueEntry', CodeValueEntry);
     });
@@ -41,7 +47,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#CodingValueEntryClass()', () => {
-    const CodingValueEntry = importResult('shr/simple/CodingValueEntry');
+
+    let CodingValueEntry;
+    before(() => CodingValueEntry = importResult('shr/simple/CodingValueEntry'));
+
     it('should serialize a JSON instance with a string code', () => {
       testJSONRoundtrip('CodingStringValueEntry', 'CodingStringValueEntry', CodingValueEntry);
     });
@@ -61,7 +70,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#CodeableConceptValueEntryClass()', () => {
-    const CodeableConceptValueEntry = importResult('shr/simple/CodeableConceptValueEntry');
+
+    let CodeableConceptValueEntry;
+    before(() => CodeableConceptValueEntry = importResult('shr/simple/CodeableConceptValueEntry'));
+
     it('should serialize a JSON instance with a string code', () => {
       testJSONRoundtrip('CodeableConceptStringValueEntry', 'CodeableConceptStringValueEntry', CodeableConceptValueEntry);
     });
@@ -104,14 +116,20 @@ describe('#ToJSON', () => {
   });
 
   describe('#ElementValueEntryClass()', () => {
-    const ElementValueEntry = importResult('shr/simple/ElementValueEntry');
+
+    let ElementValueEntry;
+    before(() => ElementValueEntry = importResult('shr/simple/ElementValueEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('ElementValueEntry', 'ElementValueEntry', ElementValueEntry);
     });
   });
 
   describe('#RecursiveEntryClass()', () => {
-    const RecursiveEntry = importResult('shr/simple/RecursiveEntry');
+
+    let RecursiveEntry;
+    before(() => RecursiveEntry = importResult('shr/simple/RecursiveEntry'));
+
     it('should serialize a JSON instance', () => {
       // This one is special cased because you're working with recursive entries
       const json = context.getJSON('RecursiveEntry');
@@ -149,8 +167,13 @@ describe('#ToJSON', () => {
   });
 
   describe('#SingleRecursiveEntryClass()', () => {
-    const RecursiveEntry = importResult('shr/simple/RecursiveEntry');
-    const SingleRecursiveEntry = importResult('shr/simple/SingleRecursiveEntry');
+
+    let RecursiveEntry, SingleRecursiveEntry;
+    before(() => {
+      RecursiveEntry = importResult('shr/simple/RecursiveEntry');
+      SingleRecursiveEntry = importResult('shr/simple/SingleRecursiveEntry');
+    });
+
     it('should serialize a JSON instance', () => {
       // This one is special cased because you're working with recursive entries
       const json = context.getJSON('SingleRecursiveEntry');
@@ -175,35 +198,50 @@ describe('#ToJSON', () => {
   });
 
   describe('#ReferenceEntryClass()', () => {
-    const ReferenceEntry = importResult('shr/simple/ReferenceEntry');
+
+    let ReferenceEntry;
+    before(() => ReferenceEntry = importResult('shr/simple/ReferenceEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('ReferenceEntry', 'ReferenceEntry', ReferenceEntry);
     });
   });
 
   describe('#BasedOnIntegerValueElementEntryClass()', () => {
-    const BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry');
+
+    let BasedOnIntegerValueElementEntry;
+    before(() => BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('BasedOnIntegerValueElementEntry', 'BasedOnIntegerValueElementEntry', BasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#InheritBasedOnIntegerValueElementEntryClass()', () => {
-    const BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry');
+
+    let BasedOnIntegerValueElementEntry;
+    before(() => BasedOnIntegerValueElementEntry = importResult('shr/simple/BasedOnIntegerValueElementEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('BasedOnIntegerValueElementEntry', 'BasedOnIntegerValueElementEntry', BasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#OverrideBasedOnIntegerValueElementEntryClass()', () => {
-    const OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry');
+
+    let OverrideBasedOnIntegerValueElementEntry;
+    before(() => OverrideBasedOnIntegerValueElementEntry = importResult('shr/simple/OverrideBasedOnIntegerValueElementEntry'));
+
     it('should serialize a JSON instance', () => {
       testJSONRoundtrip('OverrideBasedOnIntegerValueElementEntry', 'OverrideBasedOnIntegerValueElementEntry', OverrideBasedOnIntegerValueElementEntry);
     });
   });
 
   describe('#ChoiceValueEntryClass()', () => {
-    const ChoiceValueEntry = importResult('shr/simple/ChoiceValueEntry');
+
+    let ChoiceValueEntry;
+    before(() => ChoiceValueEntry = importResult('shr/simple/ChoiceValueEntry'));
+
     it('should serialize a JSON instance with a string', () => {
       testJSONRoundtrip('ChoiceValueStringEntry', 'ChoiceValueEntry', ChoiceValueEntry);
     });
@@ -214,7 +252,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#ChoiceValueEntryListClass()', () => {
-    const ChoiceValueListEntry = importResult('shr/simple/ChoiceValueListEntry');
+
+    let ChoiceValueListEntry;
+    before(() => ChoiceValueListEntry = importResult('shr/simple/ChoiceValueListEntry'));
+
     it('should serialize a JSON instance with a list of strings/Codings', () => {
       testJSONRoundtrip('ChoiceValueListEntry', 'ChoiceValueListEntry', ChoiceValueListEntry);
     });
@@ -240,7 +281,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#OptionalIntegerValueEntryClass()', () => {
-    const OptionalIntegerValueEntry = importResult('shr/simple/OptionalIntegerValueEntry');
+
+    let OptionalIntegerValueEntry;
+    before(() => OptionalIntegerValueEntry = importResult('shr/simple/OptionalIntegerValueEntry'));
+
     it('should serialize a JSON instance with a normal integer value', () => {
       testJSONRoundtrip('OptionalIntegerValueEntry', 'OptionalIntegerValueEntry', OptionalIntegerValueEntry);
     });
@@ -266,7 +310,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#OptionalElementValueEntryClass()', () => {
-    const OptionalElementValueEntry = importResult('shr/simple/OptionalElementValueEntry');
+
+    let OptionalElementValueEntry;
+    before(() => OptionalElementValueEntry = importResult('shr/simple/OptionalElementValueEntry'));
+
     it('should serialize a JSON instance with a normal integer value', () => {
       testJSONRoundtrip('OptionalElementValueEntry', 'OptionalElementValueEntry', OptionalElementValueEntry);
     });
@@ -288,7 +335,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#OptionalChoiceValueEntryClass()', () => {
-    const OptionalChoiceValueEntry = importResult('shr/simple/OptionalChoiceValueEntry');
+
+    let OptionalChoiceValueEntry;
+    before(() => OptionalChoiceValueEntry = importResult('shr/simple/OptionalChoiceValueEntry'));
+
     it('should serialize a JSON instance with a normal value', () => {
       testJSONRoundtrip('OptionalChoiceValueEntry', 'OptionalChoiceValueEntry', OptionalChoiceValueEntry);
     });
@@ -318,7 +368,10 @@ describe('#ToJSON', () => {
   });
 
   describe('#OptionalFieldEntryClass()', () => {
-    const OptionalFieldEntry = importResult('shr/simple/OptionalFieldEntry');
+
+    let OptionalFieldEntry;
+    before(() => OptionalFieldEntry = importResult('shr/simple/OptionalFieldEntry'));
+
     it('should serialize a JSON instance with a normal integer value', () => {
       testJSONRoundtrip('OptionalFieldEntry', 'OptionalFieldEntry', OptionalFieldEntry);
     });

@@ -343,9 +343,40 @@ describe('#FromFHIR_DSTU2', () => {
 
   let context;
   before(() => {
-    context = setup('./test/fixtures/spec', 'config_dstu2.json', './build/test/dstu2', true);
+    context = setup('./test/fixtures/spec', 'config_dstu2.json', './build/test_dstu2', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_DSTU_2');
+  });
+
+
+  describe('#Observation_DSTU2()', () => {
+
+    let Observation, Reference, ShrId, EntryId, EntryType;
+    before(() => {
+      Observation = context.importResult('shr/slicing/Observation');
+      Reference = context.importResult('Reference');
+      ShrId = context.importResult('shr/base/ShrId');
+      EntryId = context.importResult('shr/base/EntryId');
+      EntryType = context.importResult('shr/base/EntryType');
+    });
+
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('Observation');
+      const entry = Observation.fromFHIR(json, '1-1');
+      expect(entry).instanceOf(Observation);
+
+      const expected = new Observation()
+        .withPatientEntry(new Reference(
+          new ShrId().withValue('1-1'),
+          new EntryId().withValue('abcd-1234'),
+          new EntryType().withValue('http://standardhealthrecord.org/spec/shr/fhir/PatientEntry')
+        )
+        );
+
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/Observation', entry, context);
+
+      expect(entry).to.eql(expected);
+    });
   });
 });
 

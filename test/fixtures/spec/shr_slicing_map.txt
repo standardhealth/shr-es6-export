@@ -6,7 +6,7 @@ Observation maps to Observation:
  PatientEntry maps to subject
 
 PanelSliceByProfile:
-PanelMembers.Observation maps to related.target (slice at = related; slice on = reference.resolve(); slice strategy = includes; slice on type = profile)
+PanelMembers.Observation maps to related.target (slice at = related; slice on = target.reference.resolve(); slice strategy = includes; slice on type = profile)
 
 BloodPressureSliceByNumber maps to http://hl7.org/fhir/StructureDefinition/bp:
 SystolicPressure maps to component (slice # = 1)
@@ -23,6 +23,3 @@ SystolicPressure.Value maps to component.value[x]
 DiastolicPressure maps to component
 DiastolicPressure.ComponentCode maps to component.code
 DiastolicPressure.Value maps to component.value[x]
-
-// PanelSliceByProfile maps to Observation:
-// Related maps to related.target (slice at = related; slice on = reference.resolve(); slice strategy = includes; slice on type = profile)

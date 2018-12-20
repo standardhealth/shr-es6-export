@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { sanityCheckModules } = require('shr-models');
+const err = require('shr-test-helpers/errors');
 const shrTI = require('shr-text-import');
 const shrEx = require('shr-expand');
 const shrFE = require('shr-fhir-export');
@@ -10,6 +11,14 @@ const { exportToES6 } = require('../lib/export');
 sanityCheckModules({shrTI, shrEx, shrJSE, shrFE});
 
 function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false) {
+  // Set the loggers so they don't log out to the screen
+  err.clear();
+  const errLogger = err.logger();
+  shrTI.setLogger(errLogger);
+  shrEx.setLogger(errLogger);
+  shrFE.setLogger(errLogger);
+  shrJSE.setLogger(errLogger);
+
   const configSpecs = shrTI.importConfigFromFilePath(inDir);
   const specs = shrEx.expand(shrTI.importFromFilePath(inDir, configSpecs));
 
@@ -79,6 +88,8 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
 
   // Initialize the ES6 classes as required
   require(`${path.resolve(outDir)}/es6/init`);
+
+  return err.errors();
 }
 
 module.exports = setup;

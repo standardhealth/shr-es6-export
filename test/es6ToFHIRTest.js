@@ -5,14 +5,19 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-setup('./test/fixtures/spec', './build/test', true);
-const context = new TestContext();
-context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
-
 describe('#ToFHIR', () => {
 
-  describe('#PatientDirectMapEntry()', () => {
-    const PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
+  const context = new TestContext();
+  before(() => {
+    setup('./test/fixtures/spec', './build/test', true);
+    context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
+  });
+
+  describe.skip('#PatientDirectMapEntry()', () => {
+
+    let PatientDirectMapEntry;
+    before(() => PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry'));
+
     it('should serialize to a validated PatientDirectMapEntry instance', () => {
       const json = context.getJSON('PatientDirectMapEntry', false);
       const entry = PatientDirectMapEntry.fromJSON(json);
@@ -23,8 +28,11 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PatientEntry()', () => {
-    const PatientEntry = importResult('shr/fhir/PatientEntry');
+  describe.skip('#PatientEntry()', () => {
+
+    let PatientEntry;
+    before(() => PatientEntry = importResult('shr/fhir/PatientEntry'));
+
     it('should serialize to a validated PatientEntry instance', () => {
       const json = context.getJSON('PatientEntry', false);
       const entry = PatientEntry.fromJSON(json);
@@ -35,8 +43,11 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PractitionerEntry()', () => {
-    const PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
+  describe.skip('#PractitionerEntry()', () => {
+
+    let PractitionerEntry;
+    before(() => PractitionerEntry = importResult('shr/fhir/PractitionerEntry'));
+
     it('should serialize to a validated PractitionerEntry instance', () => {
       const json = context.getJSON('PractitionerEntry', false);
       const entry = PractitionerEntry.fromJSON(json);
@@ -47,8 +58,11 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#BloodPressureSliceByNumber()', () => {
-    const BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
+  describe.skip('#BloodPressureSliceByNumber()', () => {
+
+    let BloodPressureSliceByNumber;
+    before(() => BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber'));
+
     it('should serialize to a validated BloodPressureSliceByNumber instance', () => {
       const json = context.getJSON('BloodPressureSliceByNumber', false);
       const entry = BloodPressureSliceByNumber.fromJSON(json);
@@ -59,8 +73,11 @@ describe('#ToFHIR', () => {
     });
   });
 
-  describe('#PanelSliceByProfile()', () => {
-    const PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
+  describe.skip('#PanelSliceByProfile()', () => {
+
+    let PanelSliceByProfile;
+    before(() => PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile'));
+
     it('should serialize to a validated PanelSliceByProfile instance', () => {
       const json = context.getJSON('PanelSliceByProfile', false);
       const entry = PanelSliceByProfile.fromJSON(json);

@@ -2,11 +2,11 @@ const fs = require('fs');
 const {expect} = require('chai');
 const Ajv = require('ajv');
 
-function importResult(path) {
-  return require(`../build/test/es6/${path}`).default;
-}
-
 class TestContext {
+
+  importResult(path) {
+    return require(`../build/test/es6/${path}`).default;
+  }
 
   // Currently create a json schema for each new profile
   // Ajv had probelems validating against the official FHIR schemas, and us-core doesn't have json schemas
@@ -82,5 +82,5 @@ class TestContext {
   }
 }
 
-module.exports = { importResult, TestContext };
+module.exports = { TestContext };
 

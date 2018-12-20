@@ -1,5 +1,4 @@
 const {expect} = require('chai');
-const { importResult } = require('./test_utils');
 const setup = require('./setup');
 require('babel-register')({
   presets: [ 'es2015' ]
@@ -7,14 +6,15 @@ require('babel-register')({
 
 describe('#Factory()', () => {
 
-  before(() => setup('./test/fixtures/spec', './build/test', true));
+  let context;
+  before(() => context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true));
 
   describe('#ObjectFactory()', () => {
 
     let ObjectFactory, StringValueEntry;
     before(() => {
-      ObjectFactory = importResult('ObjectFactory');
-      StringValueEntry = importResult('shr/simple/StringValueEntry');
+      ObjectFactory = context.importResult('ObjectFactory');
+      StringValueEntry = context.importResult('shr/simple/StringValueEntry');
     });
 
     it('should create classes by name', () => {
@@ -38,8 +38,8 @@ describe('#Factory()', () => {
 
     let ShrSimpleTestObjectFactory, StringValueEntry;
     before(() => {
-      ShrSimpleTestObjectFactory = importResult('shr/simple/ShrSimpleObjectFactory');
-      StringValueEntry = importResult('shr/simple/StringValueEntry');
+      ShrSimpleTestObjectFactory = context.importResult('shr/simple/ShrSimpleObjectFactory');
+      StringValueEntry = context.importResult('shr/simple/StringValueEntry');
     });
 
     it('should create classes by name', () => {

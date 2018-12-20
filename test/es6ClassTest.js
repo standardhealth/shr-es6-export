@@ -1,5 +1,4 @@
 const {expect} = require('chai');
-const { importResult } = require('./test_utils');
 const setup = require('./setup');
 require('babel-register')({
   presets: [ 'es2015' ]
@@ -7,12 +6,13 @@ require('babel-register')({
 
 describe('#Class', () => {
 
-  before(() => setup('./test/fixtures/spec', './build/test', true));
+  let context;
+  before(() => context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true));
 
   describe('#StringValueClass()', () => {
 
     let StringValueEntry;
-    before(() => StringValueEntry = importResult('shr/simple/StringValueEntry'));
+    before(() => StringValueEntry = context.importResult('shr/simple/StringValueEntry'));
 
     it('should construct to empty instance', () => {
       const pv = new StringValueEntry();
@@ -58,7 +58,7 @@ describe('#Class', () => {
   describe('#ReservedWordEntryClass()', () => {
 
     let ReservedWordEntry;
-    before(() => ReservedWordEntry = importResult('shr/reserved/ReservedWordEntry'));
+    before(() => ReservedWordEntry = context.importResult('shr/reserved/ReservedWordEntry'));
 
     it('should not use any keywords as variable names', () => {
       // This test should have thrown an error by now if there is a reserved word violation, but just in case...

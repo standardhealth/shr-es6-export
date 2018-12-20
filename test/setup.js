@@ -7,10 +7,12 @@ const shrEx = require('shr-expand');
 const shrFE = require('shr-fhir-export');
 const shrJSE = require('shr-json-schema-export');
 const { exportToES6 } = require('../lib/export');
+const { TestContext } = require('./test_utils');
 
 sanityCheckModules({shrTI, shrEx, shrJSE, shrFE});
 
-function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false) {
+function setup(inDir='./test/fixtures/spec', configFile='config_stu3.json', outDir='./build/test', clean=false) {
+  const context = new TestContext();
   // Set the loggers so they don't log out to the screen
   err.clear();
   const errLogger = err.logger();
@@ -19,7 +21,7 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
   shrFE.setLogger(errLogger);
   shrJSE.setLogger(errLogger);
 
-  const configSpecs = shrTI.importConfigFromFilePath(inDir);
+  const configSpecs = shrTI.importConfigFromFilePath(inDir, configFile);
   const specs = shrEx.expand(shrTI.importFromFilePath(inDir, configSpecs));
 
   // Generate the JSON schemas
@@ -89,7 +91,9 @@ function setup(inDir='./test/fixtures/spec', outDir='./build/test', clean=false)
   // Initialize the ES6 classes as required
   require(`${path.resolve(outDir)}/es6/init`);
 
-  return err.errors();
+  context.errors = err.errors();
+
+  return context;
 }
 
 module.exports = setup;

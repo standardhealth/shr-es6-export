@@ -1,5 +1,4 @@
 const {expect} = require('chai');
-const { TestContext, importResult } = require('./test_utils');
 const setup = require('./setup');
 require('babel-register')({
   presets: [ 'es2015' ]
@@ -7,16 +6,16 @@ require('babel-register')({
 
 describe('#ToFHIR', () => {
 
-  const context = new TestContext();
+  let context;
   before(() => {
-    setup('./test/fixtures/spec', './build/test', true);
+    context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true);
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
   });
 
   describe.skip('#PatientDirectMapEntry()', () => {
 
     let PatientDirectMapEntry;
-    before(() => PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry'));
+    before(() => PatientDirectMapEntry = context.importResult('shr/fhir/PatientDirectMapEntry'));
 
     it('should serialize to a validated PatientDirectMapEntry instance', () => {
       const json = context.getJSON('PatientDirectMapEntry', false);
@@ -31,7 +30,7 @@ describe('#ToFHIR', () => {
   describe.skip('#PatientEntry()', () => {
 
     let PatientEntry;
-    before(() => PatientEntry = importResult('shr/fhir/PatientEntry'));
+    before(() => PatientEntry = context.importResult('shr/fhir/PatientEntry'));
 
     it('should serialize to a validated PatientEntry instance', () => {
       const json = context.getJSON('PatientEntry', false);
@@ -46,7 +45,7 @@ describe('#ToFHIR', () => {
   describe.skip('#PractitionerEntry()', () => {
 
     let PractitionerEntry;
-    before(() => PractitionerEntry = importResult('shr/fhir/PractitionerEntry'));
+    before(() => PractitionerEntry = context.importResult('shr/fhir/PractitionerEntry'));
 
     it('should serialize to a validated PractitionerEntry instance', () => {
       const json = context.getJSON('PractitionerEntry', false);
@@ -61,7 +60,7 @@ describe('#ToFHIR', () => {
   describe.skip('#BloodPressureSliceByNumber()', () => {
 
     let BloodPressureSliceByNumber;
-    before(() => BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber'));
+    before(() => BloodPressureSliceByNumber = context.importResult('shr/slicing/BloodPressureSliceByNumber'));
 
     it('should serialize to a validated BloodPressureSliceByNumber instance', () => {
       const json = context.getJSON('BloodPressureSliceByNumber', false);
@@ -76,7 +75,7 @@ describe('#ToFHIR', () => {
   describe.skip('#PanelSliceByProfile()', () => {
 
     let PanelSliceByProfile;
-    before(() => PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile'));
+    before(() => PanelSliceByProfile = context.importResult('shr/slicing/PanelSliceByProfile'));
 
     it('should serialize to a validated PanelSliceByProfile instance', () => {
       const json = context.getJSON('PanelSliceByProfile', false);

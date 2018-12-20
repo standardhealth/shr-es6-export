@@ -1,15 +1,14 @@
 const { expect } = require('chai');
 const setup = require('./setup');
-const { TestContext, importResult } = require('./test_utils');
 require('babel-register')({
   presets: [ 'es2015' ]
 });
 
-describe('#FromFHIR', () => {
+describe('#FromFHIR_STU3', () => {
 
-  const context = new TestContext();
+  let context;
   before(() => {
-    setup('./test/fixtures/spec', './build/test', true);
+    context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
   });
@@ -18,8 +17,8 @@ describe('#FromFHIR', () => {
 
     let PatientDirectMapEntry, BooleanValue;
     before(() => {
-      PatientDirectMapEntry = importResult('shr/fhir/PatientDirectMapEntry');
-      BooleanValue = importResult('shr/simple/BooleanValue');
+      PatientDirectMapEntry = context.importResult('shr/fhir/PatientDirectMapEntry');
+      BooleanValue = context.importResult('shr/simple/BooleanValue');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -29,7 +28,7 @@ describe('#FromFHIR', () => {
 
       const expected = new PatientDirectMapEntry()
         .withBooleanValue(new BooleanValue().withValue(true));
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PatientDirectMapEntry', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PatientDirectMapEntry', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -39,14 +38,14 @@ describe('#FromFHIR', () => {
 
     let PatientEntry, IntegerValueElement, DecimalValueElement, ComplexExtension, StringValue, BooleanValue, Deceased, PhotoNote;
     before(() => {
-      PatientEntry = importResult('shr/fhir/PatientEntry');
-      IntegerValueElement = importResult('shr/simple/IntegerValueElement');
-      DecimalValueElement = importResult('shr/simple/DecimalValueElement');
-      ComplexExtension = importResult('shr/fhir/ComplexExtension');
-      StringValue = importResult('shr/simple/StringValue');
-      BooleanValue = importResult('shr/simple/BooleanValue');
-      Deceased = importResult('shr/fhir/Deceased');
-      PhotoNote = importResult('shr/fhir/PhotoNote');
+      PatientEntry = context.importResult('shr/fhir/PatientEntry');
+      IntegerValueElement = context.importResult('shr/simple/IntegerValueElement');
+      DecimalValueElement = context.importResult('shr/simple/DecimalValueElement');
+      ComplexExtension = context.importResult('shr/fhir/ComplexExtension');
+      StringValue = context.importResult('shr/simple/StringValue');
+      BooleanValue = context.importResult('shr/simple/BooleanValue');
+      Deceased = context.importResult('shr/fhir/Deceased');
+      PhotoNote = context.importResult('shr/fhir/PhotoNote');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -66,7 +65,7 @@ describe('#FromFHIR', () => {
         .withStringValue(new StringValue().withValue('MyString'))
         .withDeceased(new Deceased().withValue(true))
         .withPhotoNote([new PhotoNote().withValue('Photo Note')]);
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PatientEntry', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PatientEntry', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -76,12 +75,12 @@ describe('#FromFHIR', () => {
 
     let PractitionerEntry, DoubleNestedBooleanValue, NestedBooleanValue, BooleanValue, NestedStringValue, StringValue;
     before(() => {
-      PractitionerEntry = importResult('shr/fhir/PractitionerEntry');
-      DoubleNestedBooleanValue = importResult('shr/simple/DoubleNestedBooleanValue');
-      NestedBooleanValue = importResult('shr/simple/NestedBooleanValue');
-      BooleanValue = importResult('shr/simple/BooleanValue');
-      NestedStringValue = importResult('shr/simple/NestedStringValue');
-      StringValue = importResult('shr/simple/StringValue');
+      PractitionerEntry = context.importResult('shr/fhir/PractitionerEntry');
+      DoubleNestedBooleanValue = context.importResult('shr/simple/DoubleNestedBooleanValue');
+      NestedBooleanValue = context.importResult('shr/simple/NestedBooleanValue');
+      BooleanValue = context.importResult('shr/simple/BooleanValue');
+      NestedStringValue = context.importResult('shr/simple/NestedStringValue');
+      StringValue = context.importResult('shr/simple/StringValue');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -98,7 +97,7 @@ describe('#FromFHIR', () => {
         .withNestedStringValue(new NestedStringValue()
           .withStringValue(new StringValue().withValue('Rob'))
         );
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PractitionerEntry', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/PractitionerEntry', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -108,15 +107,15 @@ describe('#FromFHIR', () => {
 
     let BloodPressureSliceByNumber, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
     before(() => {
-      BloodPressureSliceByNumber = importResult('shr/slicing/BloodPressureSliceByNumber');
-      SystolicPressure = importResult('shr/slicing/SystolicPressure');
-      DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
-      ComponentCode = importResult('shr/slicing/ComponentCode');
-      Quantity = importResult('shr/core/Quantity');
-      Units = importResult('shr/core/Units');
-      CodeableConcept = importResult('shr/core/CodeableConcept');
-      Coding = importResult('shr/core/Coding');
-      CodeSystem = importResult('shr/core/CodeSystem');
+      BloodPressureSliceByNumber = context.importResult('shr/slicing/BloodPressureSliceByNumber');
+      SystolicPressure = context.importResult('shr/slicing/SystolicPressure');
+      DiastolicPressure = context.importResult('shr/slicing/DiastolicPressure');
+      ComponentCode = context.importResult('shr/slicing/ComponentCode');
+      Quantity = context.importResult('shr/core/Quantity');
+      Units = context.importResult('shr/core/Units');
+      CodeableConcept = context.importResult('shr/core/CodeableConcept');
+      Coding = context.importResult('shr/core/Coding');
+      CodeSystem = context.importResult('shr/core/CodeSystem');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -171,7 +170,7 @@ describe('#FromFHIR', () => {
               )
             )
         );
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByNumber', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByNumber', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -181,15 +180,15 @@ describe('#FromFHIR', () => {
 
     let BloodPressureSliceByValue, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
     before(() => {
-      BloodPressureSliceByValue = importResult('shr/slicing/BloodPressureSliceByValue');
-      SystolicPressure = importResult('shr/slicing/SystolicPressure');
-      DiastolicPressure = importResult('shr/slicing/DiastolicPressure');
-      ComponentCode = importResult('shr/slicing/ComponentCode');
-      Quantity = importResult('shr/core/Quantity');
-      Units = importResult('shr/core/Units');
-      CodeableConcept = importResult('shr/core/CodeableConcept');
-      Coding = importResult('shr/core/Coding');
-      CodeSystem = importResult('shr/core/CodeSystem');
+      BloodPressureSliceByValue = context.importResult('shr/slicing/BloodPressureSliceByValue');
+      SystolicPressure = context.importResult('shr/slicing/SystolicPressure');
+      DiastolicPressure = context.importResult('shr/slicing/DiastolicPressure');
+      ComponentCode = context.importResult('shr/slicing/ComponentCode');
+      Quantity = context.importResult('shr/core/Quantity');
+      Units = context.importResult('shr/core/Units');
+      CodeableConcept = context.importResult('shr/core/CodeableConcept');
+      Coding = context.importResult('shr/core/Coding');
+      CodeSystem = context.importResult('shr/core/CodeSystem');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -244,7 +243,7 @@ describe('#FromFHIR', () => {
               )
             )
         );
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByValue', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByValue', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -253,15 +252,15 @@ describe('#FromFHIR', () => {
   describe('#PanelSliceByProfile()', () => {
     let PanelSliceByProfile, PanelMembers, MemberA, MemberB, Reference, Entry, ShrId, EntryId, EntryType;
     before(() => {
-      PanelSliceByProfile = importResult('shr/slicing/PanelSliceByProfile');
-      PanelMembers = importResult('shr/slicing/PanelMembers');
-      MemberA = importResult('shr/slicing/MemberA');
-      MemberB = importResult('shr/slicing/MemberB');
-      Reference = importResult('Reference');
-      Entry = importResult('shr/base/Entry');
-      ShrId = importResult('shr/base/ShrId');
-      EntryId = importResult('shr/base/EntryId');
-      EntryType = importResult('shr/base/EntryType');
+      PanelSliceByProfile = context.importResult('shr/slicing/PanelSliceByProfile');
+      PanelMembers = context.importResult('shr/slicing/PanelMembers');
+      MemberA = context.importResult('shr/slicing/MemberA');
+      MemberB = context.importResult('shr/slicing/MemberB');
+      Reference = context.importResult('Reference');
+      Entry = context.importResult('shr/base/Entry');
+      ShrId = context.importResult('shr/base/ShrId');
+      EntryId = context.importResult('shr/base/EntryId');
+      EntryType = context.importResult('shr/base/EntryType');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -303,7 +302,7 @@ describe('#FromFHIR', () => {
           .withEntryType(new EntryType().withValue('http://standardhealthrecord.org/spec/shr/slicing/MemberB'))
         );
 
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/PanelSliceByProfile', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/PanelSliceByProfile', entry, context);
 
       expect(entry).to.eql(expected);
     });
@@ -313,11 +312,11 @@ describe('#FromFHIR', () => {
 
     let Observation, Reference, ShrId, EntryId, EntryType;
     before(() => {
-      Observation = importResult('shr/slicing/Observation');
-      Reference = importResult('Reference');
-      ShrId = importResult('shr/base/ShrId');
-      EntryId = importResult('shr/base/EntryId');
-      EntryType = importResult('shr/base/EntryType');
+      Observation = context.importResult('shr/slicing/Observation');
+      Reference = context.importResult('Reference');
+      ShrId = context.importResult('shr/base/ShrId');
+      EntryId = context.importResult('shr/base/EntryId');
+      EntryType = context.importResult('shr/base/EntryType');
     });
 
     it('should deserialize a FHIR JSON instance', () => {
@@ -333,21 +332,31 @@ describe('#FromFHIR', () => {
         )
         );
 
-      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/Observation', entry);
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/Observation', entry, context);
 
       expect(entry).to.eql(expected);
     });
   });
 });
 
-function fixExpectedEntryInfo(expectedObj, expectedType, actualObj) {
+describe('#FromFHIR_DSTU2', () => {
+
+  let context;
+  before(() => {
+    context = setup('./test/fixtures/spec', 'config_dstu2.json', './build/test/dstu2', true);
+    context.setupAjvJson('./build/test/schema');
+    context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_DSTU_2');
+  });
+});
+
+function fixExpectedEntryInfo(expectedObj, expectedType, actualObj, context) {
   // Since shrID and entryID are generated, there's no way to predict what they will be.
   // In order to preserve the ability to do equality checks, set the expected shrId and
   // entryID to the actuals.
-  const Entry = importResult('shr/base/Entry');
-  const ShrId = importResult('shr/base/ShrId');
-  const EntryId = importResult('shr/base/EntryId');
-  const EntryType = importResult('shr/base/EntryType');
+  const Entry = context.importResult('shr/base/Entry');
+  const ShrId = context.importResult('shr/base/ShrId');
+  const EntryId = context.importResult('shr/base/EntryId');
+  const EntryType = context.importResult('shr/base/EntryType');
 
   let shrIdStr = 'not found in actual';
   let entryIdStr = 'not found in actual';

@@ -1415,24 +1415,28 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
-shr-expand@^5.5.2:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/shr-expand/-/shr-expand-5.5.2.tgz#e325327b8e1a1995229c7abb1fbef4a5347b67ff"
+shr-expand@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/shr-expand/-/shr-expand-5.7.0.tgz#a9bd0d2c099dada0345b734613252c55e61710ba"
+  integrity sha512-wUJDV/uusXSM3ZSUTY1xsGhO5XTZcIvUqYC0r2lQBOIlkF76CmFNW048c1av5gJwjTD1s534PYKcM65jGxPWqw==
 
-shr-fhir-export@standardhealth/shr-fhir-export#to_fhir_slicing:
-  version "5.8.1"
-  resolved "https://codeload.github.com/standardhealth/shr-fhir-export/tar.gz/ddaa3330cf4a37c927211b02b0ebd2de638cff49"
+shr-fhir-export@^5.10.0-beta.1:
+  version "5.10.0-beta.1"
+  resolved "https://registry.yarnpkg.com/shr-fhir-export/-/shr-fhir-export-5.10.0-beta.1.tgz#b91c60afbc2b067c32ad3b84131925749f00ddaa"
+  integrity sha512-T3z5ePuUrPDU2kXU1p3o4b/OOloDEVzsHlOQBrxdC276Y/srOLdkgt5ONkrpj8fLnQYRQHpmH3FjhsCktL/Stw==
   dependencies:
     fs-extra "^2.0.0"
     lodash "^4.17.5"
 
-shr-json-schema-export@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/shr-json-schema-export/-/shr-json-schema-export-5.3.1.tgz#6eb8201a6c4911292db7aa15354d0ddaad902eee"
+shr-json-schema-export@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/shr-json-schema-export/-/shr-json-schema-export-5.3.2.tgz#8840b62eb6a882cb242043e93733e1f3bd472a21"
+  integrity sha512-sv8TF5VNh/JlJg5M7ZtPUSuKrKrjSsrUg11JYtpWevvfSwyfgM3T0KkL9bsyoAr1QCLwYRiosZFV89FZDregEA==
 
-shr-models@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/shr-models/-/shr-models-5.5.3.tgz#bc972ba2355bd7dd35d1169c7f17332967165c65"
+shr-models@^5.5.4:
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/shr-models/-/shr-models-5.5.4.tgz#f37490ed25cf4e33e8d013c412687fdfa474afd5"
+  integrity sha512-+kIVWYSPYdFVN3ik1MKfTR1etAxBsugQD8V6cItr1qpqcLra/qNM2yp/IzJ6+E2PhycZojYJpkd+NsaU4TaaPg==
 
 shr-test-helpers@^5.2.2:
   version "5.2.2"

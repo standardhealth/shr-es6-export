@@ -36,6 +36,7 @@
     "shr-test-helpers": "^5.2.2"
   },
   "peerDependencies": {
+    "bunyan": "^1.8.9",
     "shr-models": "^5.5.3"
   }
 }

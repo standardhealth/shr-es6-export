@@ -7,7 +7,8 @@ require('babel-register')({
 describe('#FromFHIR_STU3', () => {
 
   let context;
-  before(() => {
+  before(function() {
+    this.timeout(5000);
     context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
@@ -342,7 +343,8 @@ describe('#FromFHIR_STU3', () => {
 describe('#FromFHIR_DSTU2', () => {
 
   let context;
-  before(() => {
+  before(function() {
+    this.timeout(5000);
     context = setup('./test/fixtures/spec', 'config_dstu2.json', './build/test_dstu2', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_DSTU_2');

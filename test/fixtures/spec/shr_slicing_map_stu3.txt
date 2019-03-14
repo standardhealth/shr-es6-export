@@ -28,3 +28,8 @@ BloodPressureSliceByValueAndIncludesStrategy maps to Observation:
 EvaluationComponent maps to component (slice on = code.coding.code; slice strategy = includes)
 EvaluationComponent.ComponentCode maps to component.code
 EvaluationComponent.Value maps to component.value[x]
+
+BloodPressureSliceByValueAndIncludesStrategyNestedComponents maps to Observation:
+EvaluationComponents.EvaluationComponent maps to component (slice on = code.coding.code; slice strategy = includes)
+EvaluationComponents.EvaluationComponent.ComponentCode maps to component.code
+EvaluationComponents.EvaluationComponent.Value maps to component.value[x]

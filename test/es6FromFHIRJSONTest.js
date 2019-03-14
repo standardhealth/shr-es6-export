@@ -8,7 +8,7 @@ describe('#FromFHIR_STU3', () => {
 
   let context;
   before(function() {
-    this.timeout(5000);
+    this.timeout(10000);
     context = setup('./test/fixtures/spec', 'config_stu3.json', './build/test', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_STU_3');
@@ -321,6 +321,80 @@ describe('#FromFHIR_STU3', () => {
     });
   });
 
+  describe.skip('#BloodPressureSliceByValueAndIncludesStrategyNestedComponents()', () => {
+
+    let BloodPressureSliceByValueAndIncludesStrategyNestedComponents, EvaluationComponents, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
+    before(() => {
+      BloodPressureSliceByValueAndIncludesStrategyNestedComponents = context.importResult('shr/slicing/BloodPressureSliceByValueAndIncludesStrategyNestedComponents');
+      EvaluationComponents = context.importResult('shr/slicing/EvaluationComponents');
+      SystolicPressure = context.importResult('shr/slicing/SystolicPressure');
+      DiastolicPressure = context.importResult('shr/slicing/DiastolicPressure');
+      ComponentCode = context.importResult('shr/slicing/ComponentCode');
+      Quantity = context.importResult('shr/core/Quantity');
+      Units = context.importResult('shr/core/Units');
+      CodeableConcept = context.importResult('shr/core/CodeableConcept');
+      Coding = context.importResult('shr/core/Coding');
+      CodeSystem = context.importResult('shr/core/CodeSystem');
+    });
+
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('BloodPressureSliceByValueAndIncludesStrategy');
+      const entry = BloodPressureSliceByValueAndIncludesStrategyNestedComponents.fromFHIR(json);
+      expect(entry).instanceOf(BloodPressureSliceByValueAndIncludesStrategyNestedComponents);
+
+      const expected = new BloodPressureSliceByValueAndIncludesStrategyNestedComponents()
+        .withEvaluationComponents(
+          new EvaluationComponents().withEvaluationComponent([
+            new SystolicPressure()
+              .withValue(
+                new Quantity()
+                  .withValue(120.0)
+                  .withUnits(
+                    new Units().withCoding(
+                      new Coding()
+                        .withCodeSystem(new CodeSystem().withValue('http://unitsofmeasure.org'))
+                        .withCode('mm[Hg]')
+                    )
+                  )
+              )
+              .withComponentCode(new ComponentCode()
+                .withValue(new CodeableConcept()
+                  .withCoding([
+                    new Coding()
+                      .withCodeSystem(new CodeSystem().withValue('http://loinc.org'))
+                      .withCode('8480-6')
+                  ])
+                )
+              ),
+            new DiastolicPressure()
+              .withValue(
+                new Quantity()
+                  .withValue(80.0)
+                  .withUnits(
+                    new Units().withCoding(
+                      new Coding()
+                        .withCodeSystem(new CodeSystem().withValue('http://unitsofmeasure.org'))
+                        .withCode('mm[Hg]')
+                    )
+                  )
+              )
+              .withComponentCode(new ComponentCode()
+                .withValue(new CodeableConcept()
+                  .withCoding([
+                    new Coding()
+                      .withCodeSystem(new CodeSystem().withValue('http://loinc.org'))
+                      .withCode('8462-4')
+                  ])
+                )
+              )
+          ])
+        );
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/slicing/BloodPressureSliceByValueAndIncludesStrategyNestedComponents', entry, context);
+
+      expect(entry).to.eql(expected);
+    });
+  });
+
   describe('#PanelSliceByProfile()', () => {
     let PanelSliceByProfile, PanelMembers, MemberA, MemberB, Reference, Entry, ShrId, EntryId, EntryType;
     before(() => {
@@ -415,7 +489,7 @@ describe('#FromFHIR_DSTU2', () => {
 
   let context;
   before(function() {
-    this.timeout(5000);
+    this.timeout(10000);
     context = setup('./test/fixtures/spec', 'config_dstu2.json', './build/test_dstu2', true);
     context.setupAjvJson('./build/test/schema');
     context.setupAjvFhir('./test/fixtures/fhir-schema', 'FHIR_DSTU_2');

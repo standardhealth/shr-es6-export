@@ -321,7 +321,7 @@ describe('#FromFHIR_STU3', () => {
     });
   });
 
-  describe.skip('#BloodPressureSliceByValueAndIncludesStrategyNestedComponents()', () => {
+  describe('#BloodPressureSliceByValueAndIncludesStrategyNestedComponents()', () => {
 
     let BloodPressureSliceByValueAndIncludesStrategyNestedComponents, EvaluationComponents, SystolicPressure, DiastolicPressure, ComponentCode, Quantity, Units, CodeableConcept, Coding, CodeSystem;
     before(() => {

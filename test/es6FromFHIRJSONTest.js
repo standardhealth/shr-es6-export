@@ -370,7 +370,7 @@ describe('#FromFHIR_STU3', () => {
       const allEntries = [json, memberA, memberB].map(j => {
         return { fullUrl: `http://example.org/fhir/Observation/${j.id}`, resource:  j };
       });
-      const entry = PanelSliceByProfile.fromFHIR(json, '12345', allEntries);
+      const entry = PanelSliceByProfile.fromFHIR(json, 'Observation', '12345', allEntries);
       expect(entry).instanceOf(PanelSliceByProfile);
 
       const expected = new PanelSliceByProfile()
@@ -420,7 +420,7 @@ describe('#FromFHIR_STU3', () => {
 
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('Observation');
-      const entry = Observation.fromFHIR(json, '1-1');
+      const entry = Observation.fromFHIR(json, 'Observation', '1-1');
       expect(entry).instanceOf(Observation);
 
       const expected = new Observation()
@@ -462,7 +462,7 @@ describe('#FromFHIR_DSTU2', () => {
 
     it('should deserialize a FHIR JSON instance', () => {
       const json = context.getFHIR('Observation');
-      const entry = Observation.fromFHIR(json, '1-1');
+      const entry = Observation.fromFHIR(json, 'Observation', '1-1');
       expect(entry).instanceOf(Observation);
 
       const expected = new Observation()

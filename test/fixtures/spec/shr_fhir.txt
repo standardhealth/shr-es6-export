@@ -1,6 +1,6 @@
 Grammar:           DataElement 6.0
 Namespace:         shr.fhir
-Uses:              shr.simple
+Uses:              shr.simple, shr.core
 
 Entry:             PatientEntry
 Description:       "Maps to the Patient resource with constraints"
@@ -31,3 +31,9 @@ Entry:             PractitionerEntry
 Description:       "Maps to Practiioner"
 Property:          DoubleNestedBooleanValue 1..1
 Property:          NestedStringValue 1..1
+
+Element:           Onset
+Value:             Age
+
+Entry:             ConditionEntry
+Property:          Onset 0..1

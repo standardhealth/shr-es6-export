@@ -6,6 +6,10 @@ Value:             decimal
 Property:          Comparator 0..1
 Property:          Units 0..1
 
+Element:           Age
+Parent:            Quantity
+                   Units from http://hl7.org/fhir/ValueSet/age-units (extensible)
+
 Element:           Comparator
 Value:             concept from http://hl7.org/fhir/ValueSet/quantity-comparator (required)
 

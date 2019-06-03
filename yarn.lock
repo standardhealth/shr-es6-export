@@ -1429,10 +1429,10 @@ shr-fhir-export@^6.0.0-beta.1:
     fs-extra "^2.0.0"
     lodash "^4.17.5"
 
-shr-json-schema-export@^6.0.0-beta.1:
-  version "6.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/shr-json-schema-export/-/shr-json-schema-export-6.0.0-beta.1.tgz#a975f737556eb32bb55bd4a0b7ef522816bcc6a7"
-  integrity sha512-Yzvp4l78d4CoMMTeI1z183Fx+PErjhTEEUKpmFBU7huzH6Pfa/6HhgIeYAngTsfZ2+D9rA4zyPGyZiHh/P9SfA==
+shr-json-schema-export@^6.0.0-beta.2:
+  version "6.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/shr-json-schema-export/-/shr-json-schema-export-6.0.0-beta.2.tgz#aaff08a41ba5c161c160bcce13ce9aa91943cf77"
+  integrity sha512-Z5nJJ9qmR1xkrJMo+gIoWxyLz6fUcBXPfUQTVQYmw68tRy9Bg9MB/JJdfXsoPfa+fDnQJaz8bL0J+U5aKnCrwQ==
 
 shr-models@^6.0.0-beta.1:
   version "6.0.0-beta.1"

@@ -478,6 +478,48 @@ describe('#FromFHIR_STU3', () => {
     });
   });
 
+  describe('#ConditionEntry()', () => {
+
+    let ConditionEntry, Onset, Age, Units, Concept, Coding;
+    before(() => {
+      ConditionEntry = context.importResult('shr/fhir/ConditionEntry');
+      Onset = context.importResult('shr/fhir/Onset');
+      Age = context.importResult('shr/core/Age');
+      Units = context.importResult('shr/core/Units');
+      Concept = context.importResult('Concept');
+      Coding = context.importResult('Coding');
+    });
+
+    it('should deserialize a FHIR JSON instance', () => {
+      const json = context.getFHIR('ConditionEntry');
+      const entry = ConditionEntry.fromFHIR(json);
+      expect(entry).instanceOf(ConditionEntry);
+
+      const expected = new ConditionEntry()
+        .withOnset(
+          new Onset().withValue(
+            new Age()
+              .withValue(25)
+              .withUnits(
+                new Units()
+                  .withValue(
+                    new Concept()
+                      .withCodings([
+                        new Coding()
+                          .withSystem('http://unitsofmeasure.org')
+                          .withCode('a')
+                          .withDisplay('years')
+                      ])
+                  )
+              )
+          )
+        );
+      fixExpectedEntryInfo(expected, 'http://standardhealthrecord.org/spec/shr/fhir/ConditionEntry', entry, context);
+
+      expect(entry).to.eql(expected);
+    });
+  });
+
   describe('#ClassRegistry', () => {
     let ClassRegistry, ObjectFactory, Observation;
 

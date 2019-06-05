@@ -160,7 +160,7 @@ describe('#FromFHIR_STU3', () => {
               new Quantity()
                 .withValue(120.0)
                 .withUnits(
-                  new Units().withCodings([
+                  new Units().withCoding([
                     new Coding()
                       .withSystem('http://unitsofmeasure.org')
                       .withCode('mm[Hg]')
@@ -169,7 +169,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8480-6')
@@ -183,7 +183,7 @@ describe('#FromFHIR_STU3', () => {
               new Quantity()
                 .withValue(80.0)
                 .withUnits(
-                  new Units().withCodings([
+                  new Units().withCoding([
                     new Coding()
                       .withSystem('http://unitsofmeasure.org')
                       .withCode('mm[Hg]')
@@ -192,7 +192,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8462-4')
@@ -235,7 +235,7 @@ describe('#FromFHIR_STU3', () => {
                   new Units()
                     .withValue(
                       new Concept()
-                        .withCodings([
+                        .withCoding([
                           new Coding()
                             .withSystem('http://unitsofmeasure.org')
                             .withCode('mm[Hg]')
@@ -245,7 +245,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8480-6')
@@ -262,7 +262,7 @@ describe('#FromFHIR_STU3', () => {
                   new Units()
                     .withValue(
                       new Concept()
-                        .withCodings([
+                        .withCoding([
                           new Coding()
                             .withSystem('http://unitsofmeasure.org')
                             .withCode('mm[Hg]')
@@ -272,7 +272,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8462-4')
@@ -315,7 +315,7 @@ describe('#FromFHIR_STU3', () => {
                   new Units()
                     .withValue(
                       new Concept()
-                        .withCodings([
+                        .withCoding([
                           new Coding()
                             .withSystem('http://unitsofmeasure.org')
                             .withCode('mm[Hg]')
@@ -325,7 +325,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8480-6')
@@ -340,7 +340,7 @@ describe('#FromFHIR_STU3', () => {
                   new Units()
                     .withValue(
                       new Concept()
-                        .withCodings([
+                        .withCoding([
                           new Coding()
                             .withSystem('http://unitsofmeasure.org')
                             .withCode('mm[Hg]')
@@ -350,7 +350,7 @@ describe('#FromFHIR_STU3', () => {
             )
             .withComponentCode(new ComponentCode()
               .withValue(new Concept()
-                .withCodings([
+                .withCoding([
                   new Coding()
                     .withSystem('http://loinc.org')
                     .withCode('8462-4')
@@ -504,7 +504,7 @@ describe('#FromFHIR_STU3', () => {
                 new Units()
                   .withValue(
                     new Concept()
-                      .withCodings([
+                      .withCoding([
                         new Coding()
                           .withSystem('http://unitsofmeasure.org')
                           .withCode('a')

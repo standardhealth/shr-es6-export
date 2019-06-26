@@ -1404,23 +1404,20 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
-shr-expand@^6.0.0:
+shr-expand@standardhealth/shr-expand#loggerific:
   version "6.0.0"
-  resolved "https://registry.yarnpkg.com/shr-expand/-/shr-expand-6.0.0.tgz#a2072f971e19b9f221e012c0056ee389a78633d7"
-  integrity sha512-zzjli5uVY23J4jHnr5Cr+iLkZ7+6RsHk3kQMksBPUR4ly96NXlCRgillJ3IszbdP3dHpBuWymcrAOjyz4C/lRA==
+  resolved "https://codeload.github.com/standardhealth/shr-expand/tar.gz/3a5007e386edd8518a88f8a566cdec566fda0bd6"
 
-shr-fhir-export@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/shr-fhir-export/-/shr-fhir-export-6.0.0.tgz#61cd6e1b08721514950f293a53fbd162f93e236c"
-  integrity sha512-ZNFnkxOvb26Rq2lIvXsuVSnoPfZsVsCgim7BrytqiNUK0jUXnvSa8oOomXYAILVKb631AK3KCMr3ZQ47ZvKcIQ==
+shr-fhir-export@standardhealth/shr-fhir-export#loggerific:
+  version "6.1.1"
+  resolved "https://codeload.github.com/standardhealth/shr-fhir-export/tar.gz/dcab98bb6f4daac16c6d2949e1603b7ae2561e0f"
   dependencies:
     fs-extra "^2.0.0"
     lodash "^4.17.5"
 
-shr-json-schema-export@^6.0.0:
+shr-json-schema-export@standardhealth/shr-json-schema-export#loggerific:
   version "6.0.0"
-  resolved "https://registry.yarnpkg.com/shr-json-schema-export/-/shr-json-schema-export-6.0.0.tgz#08e969c5debf5719b298c59c2b1ef83f1c52fa3e"
-  integrity sha512-megbVDNpi/PenTVFHFbkqgAmud8LwToveyUaKL0qabnEJ1QzwUuik3aZFz007kC7iidyAVKGo0GcKUBb0k1RQg==
+  resolved "https://codeload.github.com/standardhealth/shr-json-schema-export/tar.gz/89f0809aec41e2f9fadd927ece92c18a8d43ac4c"
 
 shr-models@^6.0.0:
   version "6.0.0"
@@ -1434,10 +1431,9 @@ shr-test-helpers@^6.0.0:
   dependencies:
     fs-extra "^5.0.0"
 
-shr-text-import@^6.0.0:
+shr-text-import@standardhealth/shr-text-import#loggerific:
   version "6.0.0"
-  resolved "https://registry.yarnpkg.com/shr-text-import/-/shr-text-import-6.0.0.tgz#79aea057d8be13571ea9c4c833172268f52e85a8"
-  integrity sha512-6OhJaV/3cr8eMaQ6fm7YtDM94tEHAJoq9O43/Neulq0JPAPOrzbSkdgUTryM3TzMH3Eaup93EwvBhKwla9xsqQ==
+  resolved "https://codeload.github.com/standardhealth/shr-text-import/tar.gz/fbcf40834a5274448a3231ea0bd5963a9ebdca08"
   dependencies:
     antlr4 "~4.6.0"
 

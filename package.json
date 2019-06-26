@@ -29,12 +29,12 @@
     "eslint": "^4.15.0",
     "fs-extra": "^4.0.2",
     "mocha": "^3.2.0",
-    "shr-expand": "^6.0.0",
-    "shr-fhir-export": "^6.0.0",
-    "shr-json-schema-export": "^6.0.0",
+    "shr-expand": "standardhealth/shr-expand#loggerific",
+    "shr-fhir-export": "standardhealth/shr-fhir-export#loggerific",
+    "shr-json-schema-export": "standardhealth/shr-json-schema-export#loggerific",
     "shr-models": "^6.0.0",
     "shr-test-helpers": "^6.0.0",
-    "shr-text-import": "^6.0.0"
+    "shr-text-import": "standardhealth/shr-text-import#loggerific"
   },
   "peerDependencies": {
     "bunyan": "^1.8.9",

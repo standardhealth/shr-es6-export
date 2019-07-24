@@ -1,6 +1,6 @@
 Grammar:           DataElement 6.0
 Namespace:         shr.simple
-Uses:              shr.core
+Uses:              obf.datatype
 
 Element:           StringValue
 Value:             string

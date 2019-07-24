@@ -228,7 +228,7 @@ function expectEntryInfo(entry, expected) {
   expectIdValue(entryInfo.entryId, expected.entryId);
   expectInstanceOf(entryInfo.entryType, 'shr/base/EntryType');
   expectUriValue(entryInfo.entryType, expected.entryType);
-  expectInstanceOf(entryInfo.creationTime, 'shr/core/CreationTime');
+  expectInstanceOf(entryInfo.creationTime, 'obf/datatype/CreationTime');
   expectDateTimeValue(entryInfo.creationTime, expected.creationTime);
   expectInstanceOf(entryInfo.lastUpdated, 'shr/base/LastUpdated');
   expectInstantValue(entryInfo.lastUpdated, expected.lastUpdated);

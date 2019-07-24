@@ -9,7 +9,7 @@
   },
   "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/RecursiveEntry" },
   "CreationTime": {
-    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/obf/datatype/CreationTime"},
     "Value": "2017-11-30T12:34:56Z"
   },
   "LastUpdated": {
@@ -28,7 +28,7 @@
       },
       "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/RecursiveEntry" },
       "CreationTime": {
-        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/obf/datatype/CreationTime"},
         "Value": "2017-11-30T12:34:56Z"
       },
       "LastUpdated": {
@@ -47,7 +47,7 @@
           },
           "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/RecursiveEntry" },
           "CreationTime": {
-            "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
+            "EntryType": { "Value": "http://standardhealthrecord.org/spec/obf/datatype/CreationTime"},
             "Value": "2017-11-30T12:34:56Z"
           },
           "LastUpdated": {
@@ -76,7 +76,7 @@
       },
       "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/RecursiveEntry" },
       "CreationTime": {
-        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/CreationTime"},
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/obf/datatype/CreationTime"},
         "Value": "2017-11-30T12:34:56Z"
       },
       "LastUpdated": {

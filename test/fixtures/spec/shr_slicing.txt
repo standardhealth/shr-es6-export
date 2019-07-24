@@ -1,6 +1,6 @@
 Grammar:           DataElement 6.0
 Namespace:         shr.slicing
-Uses:              shr.core, shr.fhir
+Uses:              obf.datatype, shr.fhir
 CodeSystem:        LNC = http://loinc.org
 
 Entry:             BloodPressureSliceByNumber

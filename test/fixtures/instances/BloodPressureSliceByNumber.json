@@ -30,11 +30,14 @@
     "EntryType": {
       "Value": "http://standardhealthrecord.org/spec/shr/slicing/SystolicPressure"
     },
-    "Value": {
+    "Quantity": {
       "EntryType": {
         "Value": "http://standardhealthrecord.org/spec/shr/core/Quantity"
       },
-      "Value": 120.0,
+      "Number": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Number" },
+        "Value": 120.0
+      },
       "Units": {
         "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Units" },
         "Value": {
@@ -63,11 +66,14 @@
     "EntryType": {
       "Value": "http://standardhealthrecord.org/spec/shr/slicing/DiastolicPressure"
     },
-    "Value": {
+    "Quantity": {
       "EntryType": {
         "Value": "http://standardhealthrecord.org/spec/shr/core/Quantity"
       },
-      "Value": 80.0,
+      "Number": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Number" },
+        "Value": 80.0
+      },
       "Units": {
         "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/core/Units" },
         "Value": {

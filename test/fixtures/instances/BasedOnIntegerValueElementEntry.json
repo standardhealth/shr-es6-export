@@ -20,5 +20,8 @@
     "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/StringValue" },
     "Value": "Hello!"
   },
-  "Value": 43
+  "IntegerValueElement": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/IntegerValueElement" },
+    "Value": 43
+  }
 }

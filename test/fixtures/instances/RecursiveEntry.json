@@ -54,10 +54,16 @@
             "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
             "Value": "2017-12-05T23:45:01Z"
           },
-          "Value": 11
+          "IntegerValueElement": {
+            "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/IntegerValueElement"},
+            "Value": 11
+          }
         }
       ],
-      "Value": 10
+      "IntegerValueElement": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/IntegerValueElement"},
+        "Value": 10
+      }
     },
     {
       "ShrId": {
@@ -77,8 +83,14 @@
         "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
         "Value": "2017-12-05T23:45:01Z"
       },
-      "Value": 20
+      "IntegerValueElement": {
+        "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/IntegerValueElement"},
+        "Value": 20
+      }
     }
   ],
-  "Value": 1
+  "IntegerValueElement": {
+    "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/simple/IntegerValueElement"},
+    "Value": 1
+  }
 }

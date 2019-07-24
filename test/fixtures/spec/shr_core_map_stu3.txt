@@ -3,7 +3,7 @@ Namespace: shr.core
 Target:    FHIR_STU_3
 
 Quantity maps to Quantity:
-  Value maps to value
+  Number maps to value
   Comparator maps to comparator
   Units maps to code
 

@@ -16,7 +16,7 @@
     "EntryType": { "Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"},
     "Value": "2017-12-05T23:45:01Z"
   },
-  "Value": {
+  "StringValueEntry": {
     "_ShrId": "1",
     "_EntryId": "1-2",
     "_EntryType": "http://standardhealthrecord.org/spec/shr/simple/StringValueEntry"

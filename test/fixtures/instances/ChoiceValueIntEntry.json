@@ -26,5 +26,10 @@
 			"Value": "http://standardhealthrecord.org/spec/shr/base/LastUpdated"
 		}
 	},
-	"Value": 35
+	"ChoiceValue": {
+		"Value": 35,
+		"EntryType": {
+			"Value": "http://standardhealthrecord.org/spec/shr/simple/ChoiceValue"
+		}
+	}
 }

@@ -30,11 +30,11 @@
     "fs-extra": "^4.0.2",
     "mocha": "^3.2.0",
     "shr-expand": "^6.0.0",
-    "shr-fhir-export": "^6.0.0",
+    "shr-fhir-export": "standardhealth/shr-fhir-export#cm_sprint_41",
     "shr-json-schema-export": "^6.0.0",
-    "shr-models": "^6.0.0",
+    "shr-models": "standardhealth/shr-models#cm_sprint_41",
     "shr-test-helpers": "^6.0.0",
-    "shr-text-import": "^6.0.0"
+    "shr-text-import": "standardhealth/shr-text-import#cm_sprint_41"
   },
   "peerDependencies": {
     "bunyan": "^1.8.9",
